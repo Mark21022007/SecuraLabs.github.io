@@ -28,29 +28,67 @@
     <style>
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; color: #1f2937; }
-        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="bg-white antialiased">
+<body class="bg-white antialiased overflow-x-hidden">
 
-    <nav class="fixed w-full z-50 glass-card shadow-sm border-b border-gray-100">
+    <nav class="fixed w-full z-50 glass-nav shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center cursor-pointer">
-                    <span class="text-2xl font-bold text-securaPurple tracking-tight">SecuraLabs</span>
+                    <a href="#home" class="text-2xl font-bold text-securaPurple tracking-tight">SecuraLabs</a>
                 </div>
+                
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home" class="text-gray-600 hover:text-securaPurple font-medium transition">Home</a>
                     <a href="#about" class="text-gray-600 hover:text-securaPurple font-medium transition">About Us</a>
                     <a href="#shop" class="text-gray-600 hover:text-securaPurple font-medium transition">Shop</a>
                     <a href="#contact" class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
-                    <a href="#cart" class="text-gray-600 hover:text-securaCoral transition">
+                    
+                    <a href="#" id="cart-icon-btn" class="text-gray-600 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
+                        <span id="cart-counter" class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
                     </a>
+                </div>
+
+                <div class="md:hidden flex items-center space-x-6">
+                    <a href="#" id="mobile-cart-icon-btn" class="text-gray-600 hover:text-securaCoral transition relative">
+                        <i class="fa-solid fa-cart-shopping text-xl"></i>
+                        <span id="mobile-cart-counter" class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
+
+    <div id="mobile-nav-sheet" class="hidden fixed inset-0 z-40 bg-white pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl">
+        <a href="#home" class="text-gray-800 hover:text-securaPurple border-b pb-4">Home</a>
+        <a href="#about" class="text-gray-800 hover:text-securaPurple border-b pb-4">About Us</a>
+        <a href="#shop" class="text-gray-800 hover:text-securaPurple border-b pb-4">Shop</a>
+        <a href="#contact" class="text-gray-800 hover:text-securaPurple border-b pb-4">Contact</a>
+    </div>
+
+    <div id="cart-drawer" class="hidden fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[60] flex flex-col border-l border-gray-200">
+        <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-securaLight">
+            <h2 class="text-xl font-bold text-securaDark">Your Cart</h2>
+            <button id="close-cart-btn" class="text-gray-400 hover:text-securaCoral text-2xl">&times;</button>
+        </div>
+        <div id="cart-items-container" class="p-6 flex-grow overflow-y-auto flex flex-col space-y-4">
+            <p class="text-gray-500 italic text-center mt-10">Your cart is currently empty.</p>
+        </div>
+        <div class="p-6 border-t border-gray-100 bg-gray-50">
+            <div class="flex justify-between mb-4 font-bold text-lg">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <button class="w-full bg-securaPurple text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow">Secure Checkout</button>
+        </div>
+    </div>
+    <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-[55]"></div>
 
     <section id="home" class="pt-32 pb-20 bg-securaLight">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
@@ -60,14 +98,14 @@
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                     Invisible protection built into your everyday beverage. SecuraLabs shifts personal safety from reactive to proactive with the Ki-Liner.
                 </p>
-                <a href="#shop" class="inline-block bg-securaPurple text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:bg-purple-700 hover:shadow-xl transition transform hover:-translate-y-1">
+                <button data-product="Ki-Liner Standard 10-Pack" data-price="6.99" class="add-to-cart-btn inline-block bg-securaPurple text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:bg-purple-700 hover:shadow-xl transition transform hover:-translate-y-1">
                     Shop Ki-Liner
-                </a>
+                </button>
             </div>
             <div class="md:w-1/2 mt-12 md:mt-0 relative">
-                <div class="rounded-2xl shadow-2xl overflow-hidden bg-gray-200 h-96 flex items-center justify-center">
-                    <i class="fa-solid fa-glass-water text-6xl text-gray-400"></i>
-                    <span class="absolute text-gray-500 font-medium mt-24">Clear Cup Presentation Placeholder</span>
+                <div class="rounded-2xl shadow-2xl overflow-hidden bg-white border border-gray-100 h-96 flex flex-col items-center justify-center">
+                    <i class="fa-solid fa-glass-water text-7xl text-gray-300 mb-4"></i>
+                    <span class="text-gray-400 font-medium tracking-wide">Clear Cup & Ki-Liner Visual</span>
                 </div>
             </div>
         </div>
@@ -82,17 +120,17 @@
                 <div class="p-8 rounded-2xl bg-securaLight shadow-sm hover:shadow-md transition">
                     <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaPurple text-2xl">1</div>
                     <h3 class="text-xl font-semibold mb-3">Pour Drink (Inactive)</h3>
-                    <p class="text-gray-600">The invisible Ki-Liner lines your cup. During normal use, it remains completely inactive and undetected.</p>
+                    <p class="text-gray-600 text-sm">The invisible Ki-Liner lines your cup. During normal use, it remains completely inactive and undetected.</p>
                 </div>
                 <div class="p-8 rounded-2xl bg-securaLight shadow-sm hover:shadow-md transition">
                     <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaCoral text-2xl">2</div>
                     <h3 class="text-xl font-semibold mb-3">Threat Detected</h3>
-                    <p class="text-gray-600">If abnormal chemical signatures are introduced, the embedded material immediately reacts.</p>
+                    <p class="text-gray-600 text-sm">If abnormal chemical signatures are introduced, the embedded material immediately reacts.</p>
                 </div>
                 <div class="p-8 rounded-2xl bg-securaLight shadow-sm hover:shadow-md transition">
                     <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-red-500 text-2xl"><i class="fa-solid fa-shield-halved"></i></div>
                     <h3 class="text-xl font-semibold mb-3">Gel-Lock Activated</h3>
-                    <p class="text-gray-600">A localized chemical reaction alters the liner's structure, creating a gel-lock that physically interrupts consumption.</p>
+                    <p class="text-gray-600 text-sm">A localized chemical reaction alters the liner's structure, creating a gel-lock that physically interrupts consumption.</p>
                 </div>
             </div>
         </div>
@@ -105,13 +143,14 @@
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
                     Our mission is to shift the burden of safety. For too long, individuals have relied on reactive detection methods like test strips. We are transitioning the industry to passive intervention. 
                 </p>
-                <div class="bg-white p-8 rounded-2xl shadow-sm text-left">
-                    <h3 class="text-2xl font-semibold text-securaPurple mb-4">The Technology</h3>
-                    <ul class="space-y-4 text-gray-600">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-3"></i> 100% Food-grade materials.</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-3"></i> Non-ingestive micro-encapsulation.</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-3"></i> No electronics or batteries required.</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-3"></i> Zero user activation needed.</li>
+                <div class="bg-white p-8 rounded-2xl shadow-sm text-left relative overflow-hidden">
+                    <div class="absolute right-0 top-0 opacity-5 text-9xl text-securaPurple"><i class="fa-solid fa-flask"></i></div>
+                    <h3 class="text-2xl font-semibold text-securaPurple mb-6 relative z-10">The Technology</h3>
+                    <ul class="space-y-4 text-gray-600 relative z-10 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> 100% Food-grade materials.</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> Non-ingestive micro-encapsulation.</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> No electronics or batteries required.</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> Zero user activation needed.</li>
                     </ul>
                 </div>
             </div>
@@ -126,46 +165,50 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 relative flex flex-col">
+                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 flex flex-col">
                     <div class="h-48 bg-securaLight rounded-xl mb-6 flex items-center justify-center">
                         <i class="fa-solid fa-snowflake text-4xl text-securaPurple"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-securaDark mb-2">Ki-Liner Standard™</h3>
-                    <p class="text-gray-500 mb-6">Optimized for cold beverages and standard cup sizes.</p>
+                    <p class="text-gray-500 mb-6 text-sm">Optimized for cold beverages and standard cup sizes.</p>
                     
-                    <div class="space-y-3 mb-8 flex-grow">
-                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:border-securaPurple">
-                            <span class="font-medium">10-Pack</span><span class="text-securaPurple font-bold">$6.99</span>
-                        </label>
-                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:border-securaPurple">
-                            <span class="font-medium">25-Pack</span><span class="text-securaPurple font-bold">$13.99</span>
-                        </label>
-                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer border-securaPurple bg-purple-50 text-securaPurple">
-                            <span class="font-medium">50-Pack</span><span class="font-bold">$24.99</span>
-                        </label>
+                    <div class="flex-grow space-y-4 mb-6">
+                        <button data-product="Ki-Liner Standard (10-Pack)" data-price="6.99" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaPurple hover:bg-purple-50 transition group">
+                            <span class="font-medium text-gray-700">10-Pack</span>
+                            <span class="text-securaPurple font-bold">$6.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                        </button>
+                        <button data-product="Ki-Liner Standard (25-Pack)" data-price="13.99" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaPurple hover:bg-purple-50 transition group">
+                            <span class="font-medium text-gray-700">25-Pack</span>
+                            <span class="text-securaPurple font-bold">$13.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                        </button>
+                        <button data-product="Ki-Liner Standard (50-Pack)" data-price="24.99" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaPurple hover:bg-purple-50 transition group">
+                            <span class="font-medium text-gray-700">50-Pack</span>
+                            <span class="text-securaPurple font-bold">$24.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                        </button>
                     </div>
-                    <button class="w-full bg-securaPurple text-white font-semibold py-3 rounded-lg shadow hover:bg-purple-700 transition">Add to Cart</button>
                 </div>
 
-                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 relative flex flex-col">
+                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 flex flex-col">
                     <div class="h-48 bg-orange-50 rounded-xl mb-6 flex items-center justify-center">
                         <i class="fa-solid fa-mug-hot text-4xl text-securaCoral"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-securaDark mb-2">Ki-Liner Thermal™</h3>
-                    <p class="text-gray-500 mb-6">Heat-resistant smart liners designed for hot beverages.</p>
+                    <p class="text-gray-500 mb-6 text-sm">Heat-resistant smart liners designed for hot beverages.</p>
                     
-                    <div class="space-y-3 mb-8 flex-grow">
-                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:border-securaCoral">
-                            <span class="font-medium">10-Pack</span><span class="text-securaCoral font-bold">$7.99</span>
-                        </label>
-                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:border-securaCoral">
-                            <span class="font-medium">25-Pack</span><span class="text-securaCoral font-bold">$15.99</span>
-                        </label>
-                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer border-securaCoral bg-orange-50 text-securaCoral">
-                            <span class="font-medium">50-Pack</span><span class="font-bold">$27.99</span>
-                        </label>
+                    <div class="flex-grow space-y-4 mb-6">
+                        <button data-product="Ki-Liner Thermal (10-Pack)" data-price="7.99" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaCoral hover:bg-orange-50 transition group">
+                            <span class="font-medium text-gray-700">10-Pack</span>
+                            <span class="text-securaCoral font-bold">$7.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                        </button>
+                        <button data-product="Ki-Liner Thermal (25-Pack)" data-price="15.99" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaCoral hover:bg-orange-50 transition group">
+                            <span class="font-medium text-gray-700">25-Pack</span>
+                            <span class="text-securaCoral font-bold">$15.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                        </button>
+                        <button data-product="Ki-Liner Thermal (50-Pack)" data-price="27.99" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaCoral hover:bg-orange-50 transition group">
+                            <span class="font-medium text-gray-700">50-Pack</span>
+                            <span class="text-securaCoral font-bold">$27.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                        </button>
                     </div>
-                    <button class="w-full bg-securaPurple text-white font-semibold py-3 rounded-lg shadow hover:bg-purple-700 transition">Add to Cart</button>
                 </div>
             </div>
 
@@ -175,7 +218,6 @@
                     <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Protect your patrons at scale. We offer bulk institutional partnerships and wholesale pricing for high-volume environments.</p>
                     <a href="#contact" class="inline-block bg-white text-securaDark font-bold py-3 px-8 rounded-full shadow hover:bg-gray-100 transition">Request Wholesale Pricing</a>
                 </div>
-                <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 20% 150%, #875cb6 20%, transparent 50%);"></div>
             </div>
         </div>
     </section>
@@ -210,14 +252,14 @@
                 </div>
 
                 <div class="bg-white rounded-2xl p-8 shadow-lg">
-                    <form>
+                    <form id="contact-form">
                         <div class="mb-4">
                             <label class="block text-gray-700 font-medium mb-2">Name</label>
-                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple" placeholder="Your Name">
+                            <input type="text" id="contact-name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple" placeholder="Your Name">
                         </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 font-medium mb-2">Email Address</label>
-                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple" placeholder="you@company.com">
+                            <input type="email" id="contact-email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple" placeholder="you@company.com">
                         </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 font-medium mb-2">Inquiry Type</label>
@@ -231,8 +273,9 @@
                             <label class="block text-gray-700 font-medium mb-2">Message</label>
                             <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple" placeholder="How can we help?"></textarea>
                         </div>
-                        <button type="button" class="w-full bg-[#F19C7C] text-white font-bold py-3 rounded-lg shadow hover:bg-orange-400 transition">Send Message</button>
+                        <button type="submit" class="w-full bg-securaCoral text-white font-bold py-3 rounded-lg shadow hover:bg-orange-400 transition">Send Message</button>
                     </form>
+                    <div id="contact-success-message" class="hidden text-securaPurple font-semibold bg-purple-50 p-6 rounded-lg border border-purple-100 text-center"></div>
                 </div>
             </div>
         </div>
@@ -259,5 +302,180 @@
         </div>
     </footer>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        /* ======================================================================
+           1. Mobile Menu Toggle
+           ====================================================================== */
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileNavSheet = document.getElementById('mobile-nav-sheet');
+
+        if (mobileMenuBtn && mobileNavSheet) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileNavSheet.classList.toggle('hidden');
+                
+                // Toggle icon from hamburger to 'X'
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileNavSheet.classList.contains('hidden')) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                }
+            });
+        }
+
+        /* ======================================================================
+           2. Shopping Cart Functionality
+           ====================================================================== */
+        const cartIconBtn = document.getElementById('cart-icon-btn');
+        const mobileCartIconBtn = document.getElementById('mobile-cart-icon-btn');
+        const cartDrawer = document.getElementById('cart-drawer');
+        const closeCartBtn = document.getElementById('close-cart-btn');
+        const cartOverlay = document.getElementById('cart-overlay');
+        
+        const cartCounter = document.getElementById('cart-counter');
+        const mobileCartCounter = document.getElementById('mobile-cart-counter');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const cartSubtotalEl = document.getElementById('cart-subtotal');
+        
+        let cartCount = 0;
+        let subtotal = 0.00;
+
+        // Function to toggle cart open/close
+        const toggleCart = (e) => {
+            if(e) e.preventDefault();
+            cartDrawer.classList.toggle('hidden');
+            cartOverlay.classList.toggle('hidden');
+        };
+
+        if (cartIconBtn) cartIconBtn.addEventListener('click', toggleCart);
+        if (mobileCartIconBtn) mobileCartIconBtn.addEventListener('click', toggleCart);
+        if (closeCartBtn) closeCartBtn.addEventListener('click', toggleCart);
+        if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
+
+        // Add to Cart Function
+        window.addToCart = function(productName, price) {
+            cartCount++;
+            subtotal += parseFloat(price);
+            
+            // Update the notification bubble in the navs
+            [cartCounter, mobileCartCounter].forEach(counter => {
+                if (counter) {
+                    counter.textContent = cartCount;
+                    counter.classList.remove('hidden'); 
+                    
+                    // Add bounce animation class
+                    counter.classList.add('animate-bounce');
+                    setTimeout(() => counter.classList.remove('animate-bounce'), 1000);
+                }
+            });
+
+            // Update cart visual
+            if(cartCount === 1) {
+                cartItemsContainer.innerHTML = ''; // Clear "empty cart" message
+            }
+
+            // Create new cart item row
+            const itemRow = document.createElement('div');
+            itemRow.className = 'flex justify-between items-center border-b border-gray-100 pb-4';
+            itemRow.innerHTML = `
+                <div>
+                    <h4 class="font-bold text-gray-800 text-sm">${productName}</h4>
+                    <span class="text-xs text-gray-500">Qty: 1</span>
+                </div>
+                <div class="font-bold text-securaPurple">$${price}</div>
+            `;
+            cartItemsContainer.appendChild(itemRow);
+
+            // Update subtotal text
+            cartSubtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+            
+            // Auto open drawer to show item was added (Optional UX enhancement)
+            if(cartDrawer.classList.contains('hidden')) {
+                toggleCart();
+            }
+        };
+
+        // Attach click events to all buttons with 'add-to-cart-btn' class
+        const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+        addToCartBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                const product = btn.getAttribute('data-product') || 'Ki-Liner Product';
+                const price = btn.getAttribute('data-price') || '0.00';
+                addToCart(product, price);
+            });
+        });
+
+        /* ======================================================================
+           3. Contact Form Submission
+           ====================================================================== */
+        const contactForm = document.getElementById('contact-form');
+        const nameInput = document.getElementById('contact-name');
+        const emailInput = document.getElementById('contact-email');
+        const successMessage = document.getElementById('contact-success-message');
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault(); // Stop page reload
+                
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+
+                // Validation
+                if (name === "" || email === "") {
+                    alert("Please provide both your Name and Email address.");
+                    return;
+                }
+
+                // Hide the form visually
+                contactForm.classList.add('hidden');
+                
+                // Show the success message
+                if (successMessage) {
+                    successMessage.innerHTML = `<i class="fa-solid fa-circle-check text-3xl mb-3 text-securaPurple"></i><br/>Thank you for contacting SecuraLabs, ${name}. Our team in São Paulo will get back to you shortly regarding your inquiry.`;
+                    successMessage.classList.remove('hidden');
+                }
+            });
+        }
+
+        /* ======================================================================
+           4. Smooth Scrolling for In-Page Anchors
+           ====================================================================== */
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        
+        anchorLinks.forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                
+                // Ignore empty hashes or links meant for toggles
+                if (targetId === '#' || targetId === '#cart') return; 
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    // Smoothly scroll to the section
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close the mobile menu if open
+                    if (mobileNavSheet && !mobileNavSheet.classList.contains('hidden')) {
+                        mobileNavSheet.classList.add('hidden');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
