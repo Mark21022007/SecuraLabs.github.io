@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecuraLabs | Safe · Simple · Reliable</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        securaPurple: '#875cb6',
+                        securaCoral: '#F19C7C',
+                        securaDark: '#1f2937',
+                        securaLight: '#f9fafb'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #1f2937; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-white antialiased">
+
+    <nav class="fixed w-full z-50 glass-card shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <span class="text-2xl font-bold text-securaPurple tracking-tight">SecuraLabs</span>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-securaPurple font-medium transition">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-securaPurple font-medium transition">About Us</a>
+                    <a href="#shop" class="text-gray-600 hover:text-securaPurple font-medium transition">Shop</a>
+                    <a href="#contact" class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
+                    <a href="#cart" class="text-gray-600 hover:text-securaCoral transition">
+                        <i class="fa-solid fa-cart-shopping text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-32 pb-20 bg-securaLight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 pr-0 md:pr-12 text-center md:text-left">
+                <span class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-4 block">Safe · Simple · Reliable</span>
+                <h1 class="text-5xl font-bold leading-tight mb-6 text-securaDark">Make Drink Safety Automatic.</h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Invisible protection built into your everyday beverage. SecuraLabs shifts personal safety from reactive to proactive with the Ki-Liner.
+                </p>
+                <a href="#shop" class="inline-block bg-securaPurple text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:bg-purple-700 hover:shadow-xl transition transform hover:-translate-y-1">
+                    Shop Ki-Liner
+                </a>
+            </div>
+            <div class="md:w-1/2 mt-12 md:mt-0 relative">
+                <div class="rounded-2xl shadow-2xl overflow-hidden bg-gray-200 h-96 flex items-center justify-center">
+                    <i class="fa-solid fa-glass-water text-6xl text-gray-400"></i>
+                    <span class="absolute text-gray-500 font-medium mt-24">Clear Cup Presentation Placeholder</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-securaDark mb-4">The Threat is Real. The Solution is Invisible.</h2>
+            <p class="max-w-2xl mx-auto text-gray-600 mb-16">In crowded, low-visibility settings, drink tampering is a persistent threat. The Ki-Liner is the world's first passive, material-based safety system that detects abnormal chemical signatures and physically interrupts consumption.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="p-8 rounded-2xl bg-securaLight shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaPurple text-2xl">1</div>
+                    <h3 class="text-xl font-semibold mb-3">Pour Drink (Inactive)</h3>
+                    <p class="text-gray-600">The invisible Ki-Liner lines your cup. During normal use, it remains completely inactive and undetected.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-securaLight shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaCoral text-2xl">2</div>
+                    <h3 class="text-xl font-semibold mb-3">Threat Detected</h3>
+                    <p class="text-gray-600">If abnormal chemical signatures are introduced, the embedded material immediately reacts.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-securaLight shadow-sm hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-red-500 text-2xl"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="text-xl font-semibold mb-3">Gel-Lock Activated</h3>
+                    <p class="text-gray-600">A localized chemical reaction alters the liner's structure, creating a gel-lock that physically interrupts consumption.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-gray-50 border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-4xl font-bold text-securaDark mb-6">Engineering Peace of Mind.</h2>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Our mission is to shift the burden of safety. For too long, individuals have relied on reactive detection methods like test strips. We are transitioning the industry to passive intervention. 
+                </p>
+                <div class="bg-white p-8 rounded-2xl shadow-sm text-left">
+                    <h3 class="text-2xl font-semibold text-securaPurple mb-4">The Technology</h3>
+                    <ul class="space-y-4 text-gray-600">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-3"></i> 100% Food-grade materials.</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-3"></i> Non-ingestive micro-encapsulation.</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-3"></i> No electronics or batteries required.</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-3"></i> Zero user activation needed.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="shop" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-securaDark">Shop Ki-Liner</h2>
+                <p class="mt-4 text-gray-600">Choose the perfect protection for your lifestyle.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 relative flex flex-col">
+                    <div class="h-48 bg-securaLight rounded-xl mb-6 flex items-center justify-center">
+                        <i class="fa-solid fa-snowflake text-4xl text-securaPurple"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-securaDark mb-2">Ki-Liner Standard™</h3>
+                    <p class="text-gray-500 mb-6">Optimized for cold beverages and standard cup sizes.</p>
+                    
+                    <div class="space-y-3 mb-8 flex-grow">
+                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:border-securaPurple">
+                            <span class="font-medium">10-Pack</span><span class="text-securaPurple font-bold">$6.99</span>
+                        </label>
+                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:border-securaPurple">
+                            <span class="font-medium">25-Pack</span><span class="text-securaPurple font-bold">$13.99</span>
+                        </label>
+                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer border-securaPurple bg-purple-50 text-securaPurple">
+                            <span class="font-medium">50-Pack</span><span class="font-bold">$24.99</span>
+                        </label>
+                    </div>
+                    <button class="w-full bg-securaPurple text-white font-semibold py-3 rounded-lg shadow hover:bg-purple-700 transition">Add to Cart</button>
+                </div>
+
+                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 relative flex flex-col">
+                    <div class="h-48 bg-orange-50 rounded-xl mb-6 flex items-center justify-center">
+                        <i class="fa-solid fa-mug-hot text-4xl text-securaCoral"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-securaDark mb-2">Ki-Liner Thermal™</h3>
+                    <p class="text-gray-500 mb-6">Heat-resistant smart liners designed for hot beverages.</p>
+                    
+                    <div class="space-y-3 mb-8 flex-grow">
+                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:border-securaCoral">
+                            <span class="font-medium">10-Pack</span><span class="text-securaCoral font-bold">$7.99</span>
+                        </label>
+                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer hover:border-securaCoral">
+                            <span class="font-medium">25-Pack</span><span class="text-securaCoral font-bold">$15.99</span>
+                        </label>
+                        <label class="flex items-center justify-between p-3 border rounded-lg cursor-pointer border-securaCoral bg-orange-50 text-securaCoral">
+                            <span class="font-medium">50-Pack</span><span class="font-bold">$27.99</span>
+                        </label>
+                    </div>
+                    <button class="w-full bg-securaPurple text-white font-semibold py-3 rounded-lg shadow hover:bg-purple-700 transition">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="mt-16 bg-securaDark rounded-2xl p-8 md:p-12 text-center text-white shadow-xl relative overflow-hidden">
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-bold mb-4">Venue, Bar, or University?</h3>
+                    <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Protect your patrons at scale. We offer bulk institutional partnerships and wholesale pricing for high-volume environments.</p>
+                    <a href="#contact" class="inline-block bg-white text-securaDark font-bold py-3 px-8 rounded-full shadow hover:bg-gray-100 transition">Request Wholesale Pricing</a>
+                </div>
+                <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 20% 150%, #875cb6 20%, transparent 50%);"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-securaLight border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-4xl font-bold text-securaDark mb-6">Get in Touch with SecuraLabs.</h2>
+                    <p class="text-gray-600 mb-8">Whether you have a question about your order, or you're a venue operator interested in implementing Ki-Liner at scale, our team is here to help.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-white p-3 rounded-lg shadow-sm text-securaPurple mr-4">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-securaDark">Headquarters</h4>
+                                <p class="text-gray-500">São Paulo, Brazil</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-white p-3 rounded-lg shadow-sm text-securaPurple mr-4">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-securaDark">Email Support</h4>
+                                <p class="text-gray-500">support@securalabs.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <form>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple" placeholder="Your Name">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple" placeholder="you@company.com">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 font-medium mb-2">Inquiry Type</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-securaPurple bg-white">
+                                <option>General Inquiry</option>
+                                <option>Retail Support</option>
+                                <option>B2B & Venue Partnership</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple" placeholder="How can we help?"></textarea>
+                        </div>
+                        <button type="button" class="w-full bg-[#F19C7C] text-white font-bold py-3 rounded-lg shadow hover:bg-orange-400 transition">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+                <span class="text-2xl font-bold text-securaPurple">SecuraLabs</span>
+                <p class="text-sm text-gray-500 mt-2">Safe · Simple · Reliable</p>
+            </div>
+            <div class="flex space-x-6 text-gray-400">
+                <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+                <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            <p>&copy; 2026 SecuraLabs. All rights reserved.</p>
+            <div class="space-x-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-gray-900">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-900">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
