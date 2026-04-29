@@ -12,6 +12,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -24,6 +25,28 @@
                         sans: ['Inter', 'sans-serif'],
                     }
                 }
+            }
+        }
+    </script>
+    <script>
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            let theme = urlParams.get('theme');
+            
+            if (!theme) {
+                theme = localStorage.getItem('theme');
+            } else {
+                try { localStorage.setItem('theme', theme); } catch(e) {}
+            }
+            
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        } catch(e) {
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
             }
         }
     </script>
@@ -44,9 +67,9 @@
     </style>
 </head>
 
-<body class="bg-white antialiased overflow-x-hidden">
+<body class="bg-white dark:bg-gray-900 antialiased overflow-x-hidden transition-colors duration-300">
 
-    <nav class="fixed w-full z-50 glass-nav shadow-sm border-b border-gray-100">
+    <nav class="fixed w-full z-50 glass-nav dark:bg-gray-900/95 shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center cursor-pointer">
@@ -56,14 +79,18 @@
                 </div>
 
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Home</a>
+                    <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Home</a>
                     <a href="about.html" class="text-securaPurple font-medium transition">About Us</a>
-                    <a href="shop.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Shop</a>
-                    <a href="faq.html" class="text-gray-600 hover:text-securaPurple font-medium transition">FAQ</a>
+                    <a href="shop.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Shop</a>
+                    <a href="faq.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">FAQ</a>
                     <a href="contact.html"
-                        class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
+                        class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Contact</a>
 
-                    <a href="#" id="cart-icon-btn" class="text-gray-600 hover:text-securaCoral transition relative">
+                    <a href="#" class="dark-mode-toggle text-gray-600 dark:text-gray-300 hover:text-securaPurple transition relative">
+                        <i class="fa-solid fa-moon text-xl"></i>
+                    </a>
+
+                    <a href="#" id="cart-icon-btn" class="text-gray-600 dark:text-gray-300 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
                         <span id="cart-counter"
                             class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
@@ -71,13 +98,16 @@
                 </div>
 
                 <div class="md:hidden flex items-center space-x-6">
+                    <a href="#" class="dark-mode-toggle text-gray-600 dark:text-gray-300 hover:text-securaPurple transition relative">
+                        <i class="fa-solid fa-moon text-xl"></i>
+                    </a>
                     <a href="#" id="mobile-cart-icon-btn"
-                        class="text-gray-600 hover:text-securaCoral transition relative">
+                        class="text-gray-600 dark:text-gray-300 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
                         <span id="mobile-cart-counter"
                             class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
                     </a>
-                    <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -86,25 +116,25 @@
     </nav>
 
     <div id="mobile-nav-sheet"
-        class="hidden fixed inset-0 z-40 bg-white pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl">
-        <a href="index.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Home</a>
-        <a href="about.html" class="text-securaPurple border-b pb-4">About Us</a>
-        <a href="shop.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Shop</a>
-        <a href="faq.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">FAQ</a>
-        <a href="contact.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Contact</a>
+        class="hidden fixed inset-0 z-40 bg-white dark:bg-gray-900 pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl transition-colors duration-300">
+        <a href="index.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Home</a>
+        <a href="about.html" class="text-securaPurple border-b dark:border-gray-800 pb-4">About Us</a>
+        <a href="shop.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Shop</a>
+        <a href="faq.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">FAQ</a>
+        <a href="contact.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Contact</a>
     </div>
 
     <div id="cart-drawer"
-        class="hidden fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[60] flex flex-col border-l border-gray-200">
-        <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-securaLight">
-            <h2 class="text-xl font-bold text-securaDark">Your Cart</h2>
+        class="hidden fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-900 shadow-2xl z-[60] flex flex-col border-l border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="p-6 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-securaLight dark:bg-gray-800">
+            <h2 class="text-xl font-bold text-securaDark dark:text-white">Your Cart</h2>
             <button id="close-cart-btn" class="text-gray-400 hover:text-securaCoral text-2xl">&times;</button>
         </div>
         <div id="cart-items-container" class="p-6 flex-grow overflow-y-auto flex flex-col space-y-4">
-            <p class="text-gray-500 italic text-center mt-10">Your cart is currently empty.</p>
+            <p class="text-gray-500 dark:text-gray-400 italic text-center mt-10">Your cart is currently empty.</p>
         </div>
-        <div class="p-6 border-t border-gray-100 bg-gray-50">
-            <div class="flex justify-between mb-4 font-bold text-lg">
+        <div class="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
+            <div class="flex justify-between mb-4 font-bold text-lg dark:text-white">
                 <span>Subtotal</span>
                 <span id="cart-subtotal">$0.00</span>
             </div>
@@ -115,16 +145,16 @@
     </div>
     <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-[55]"></div>
 
-    <section id="about" class="pt-32 pb-20 bg-gray-50 min-h-[calc(100vh-200px)] flex flex-col justify-center">
+    <section id="about" class="pt-32 pb-20 bg-gray-50 dark:bg-gray-800/30 min-h-[calc(100vh-200px)] flex flex-col justify-center transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 flex flex-col md:flex-row items-center gap-12">
             <div class="md:w-1/2 text-center md:text-left">
-                <h2 class="text-4xl font-bold text-securaDark mb-6">Who are we?</h2>
-                <p class="text-lg text-gray-600 leading-relaxed text-justify">
+                <h2 class="text-4xl font-bold text-securaDark dark:text-white mb-6">Who are we?</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
                     At Secura Labs, we are driven by one simple idea: social environments should feel as safe as they are enjoyable. Founded by a group of forward-thinking students with a passion for innovation and real-world impact, our mission is to create solutions that add an extra layer of confidence without disrupting everyday experiences. Our flagship product, Ki-Liner, was developed to address a growing concern in nightlife and social settings by offering a discreet, seamless way to help reduce the risk of drink tampering. We focus on combining modern design, practical functionality, and responsible innovation to create products that work in the background while people stay present in the moment. At Secura Labs, we are not just building products—we are shaping a safer standard for social spaces worldwide.
                 </p>
             </div>
             <div class="md:w-1/2">
-                <div class="rounded-3xl shadow-2xl overflow-hidden border border-gray-100 bg-white">
+                <div class="rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800">
                     <img src="img/about%20us%20img.png" alt="About Secura Labs" class="w-full h-auto object-cover">
                 </div>
             </div>
@@ -132,16 +162,16 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-securaDark mb-6">Engineering Peace of Mind.</h2>
-                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                <h2 class="text-4xl font-bold text-securaDark dark:text-white mb-6">Engineering Peace of Mind.</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                     Our mission is to shift the burden of safety. For too long, individuals have relied on reactive
                     detection methods like test strips. We are transitioning the industry to passive intervention.
                 </p>
-                <div class="bg-white p-8 rounded-2xl shadow-sm text-left relative overflow-hidden">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm text-left relative overflow-hidden">
                     <div class="absolute right-0 top-0 opacity-5 text-9xl text-securaPurple"><i
                             class="fa-solid fa-flask"></i></div>
                     <h3 class="text-2xl font-semibold text-securaPurple mb-6 relative z-10">The Technology</h3>
-                    <ul class="space-y-4 text-gray-600 relative z-10 font-medium">
+                    <ul class="space-y-4 text-gray-600 dark:text-gray-300 relative z-10 font-medium">
                         <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> 100%
                             Food-grade materials.</li>
                         <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i>
@@ -156,7 +186,7 @@
         </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 py-12">
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0">
                 <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-14 w-auto object-contain mb-2">
@@ -169,11 +199,11 @@
             </div>
         </div>
         <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
             <p>&copy; 2026 SecuraLabs. All rights reserved.</p>
             <div class="space-x-4 mt-4 md:mt-0">
-                <a href="#" class="hover:text-gray-900">Privacy Policy</a>
-                <a href="#" class="hover:text-gray-900">Terms of Service</a>
+                <a href="#" class="hover:text-gray-900 dark:hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-900 dark:hover:text-white">Terms of Service</a>
             </div>
         </div>
     </footer>

@@ -240,4 +240,62 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    /* ======================================================================
+       5. Dark Mode Toggle
+       ====================================================================== */
+    const darkModeToggleBtns = document.querySelectorAll('.dark-mode-toggle');
+    
+    const updateDarkModeIcons = () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        darkModeToggleBtns.forEach(btn => {
+            const icon = btn.querySelector('i');
+            if (icon) {
+                if (isDark) {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            }
+        });
+    };
+
+    darkModeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            try {
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch (err) {}
+            updateDarkModeIcons();
+        });
+    });
+
+    // Initialize icons on load
+    updateDarkModeIcons();
+
+    /* ======================================================================
+       6. Local File Theme Persistence Fallback
+       ====================================================================== */
+    document.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (a && a.href && a.href.includes('.html') && !a.href.includes('#')) {
+            try {
+                const url = new URL(a.href, window.location.href);
+                if (url.origin === window.location.origin || url.protocol === 'file:') {
+                    const isDark = document.documentElement.classList.contains('dark');
+                    url.searchParams.set('theme', isDark ? 'dark' : 'light');
+                    e.preventDefault();
+                    window.location.href = url.toString();
+                }
+            } catch (err) {}
+        }
+    });
+
+    // Initialize icons on load
+    updateDarkModeIcons();
+
 });

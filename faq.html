@@ -12,6 +12,7 @@
 
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -24,6 +25,28 @@
                         sans: ['Inter', 'sans-serif'],
                     }
                 }
+            }
+        }
+    </script>
+    <script>
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            let theme = urlParams.get('theme');
+            
+            if (!theme) {
+                theme = localStorage.getItem('theme');
+            } else {
+                try { localStorage.setItem('theme', theme); } catch(e) {}
+            }
+            
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        } catch(e) {
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
             }
         }
     </script>
@@ -44,9 +67,9 @@
     </style>
 </head>
 
-<body class="bg-white antialiased overflow-x-hidden">
+<body class="bg-white dark:bg-gray-900 antialiased overflow-x-hidden transition-colors duration-300">
 
-    <nav class="fixed w-full z-50 glass-nav shadow-sm border-b border-gray-100">
+    <nav class="fixed w-full z-50 glass-nav dark:bg-gray-900/95 shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center cursor-pointer">
@@ -56,13 +79,17 @@
                 </div>
 
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Home</a>
-                    <a href="about.html" class="text-gray-600 hover:text-securaPurple font-medium transition">About Us</a>
-                    <a href="shop.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Shop</a>
+                    <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Home</a>
+                    <a href="about.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">About Us</a>
+                    <a href="shop.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Shop</a>
                     <a href="faq.html" class="text-securaPurple font-medium transition">FAQ</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
+                    <a href="contact.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Contact</a>
 
-                    <a href="#" id="cart-icon-btn" class="text-gray-600 hover:text-securaCoral transition relative">
+                    <a href="#" class="dark-mode-toggle text-gray-600 dark:text-gray-300 hover:text-securaPurple transition relative">
+                        <i class="fa-solid fa-moon text-xl"></i>
+                    </a>
+
+                    <a href="#" id="cart-icon-btn" class="text-gray-600 dark:text-gray-300 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
                         <span id="cart-counter"
                             class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
@@ -70,13 +97,16 @@
                 </div>
 
                 <div class="md:hidden flex items-center space-x-6">
+                    <a href="#" class="dark-mode-toggle text-gray-600 dark:text-gray-300 hover:text-securaPurple transition relative">
+                        <i class="fa-solid fa-moon text-xl"></i>
+                    </a>
                     <a href="#" id="mobile-cart-icon-btn"
-                        class="text-gray-600 hover:text-securaCoral transition relative">
+                        class="text-gray-600 dark:text-gray-300 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
                         <span id="mobile-cart-counter"
                             class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
                     </a>
-                    <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -85,25 +115,25 @@
     </nav>
 
     <div id="mobile-nav-sheet"
-        class="hidden fixed inset-0 z-40 bg-white pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl">
-        <a href="index.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Home</a>
-        <a href="about.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">About Us</a>
-        <a href="shop.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Shop</a>
-        <a href="faq.html" class="text-securaPurple border-b pb-4">FAQ</a>
-        <a href="contact.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Contact</a>
+        class="hidden fixed inset-0 z-40 bg-white dark:bg-gray-900 pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl transition-colors duration-300">
+        <a href="index.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Home</a>
+        <a href="about.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">About Us</a>
+        <a href="shop.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Shop</a>
+        <a href="faq.html" class="text-securaPurple border-b dark:border-gray-800 pb-4">FAQ</a>
+        <a href="contact.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Contact</a>
     </div>
 
     <div id="cart-drawer"
-        class="hidden fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[60] flex flex-col border-l border-gray-200">
-        <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-securaLight">
-            <h2 class="text-xl font-bold text-securaDark">Your Cart</h2>
+        class="hidden fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-900 shadow-2xl z-[60] flex flex-col border-l border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div class="p-6 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-securaLight dark:bg-gray-800">
+            <h2 class="text-xl font-bold text-securaDark dark:text-white">Your Cart</h2>
             <button id="close-cart-btn" class="text-gray-400 hover:text-securaCoral text-2xl">&times;</button>
         </div>
         <div id="cart-items-container" class="p-6 flex-grow overflow-y-auto flex flex-col space-y-4">
-            <p class="text-gray-500 italic text-center mt-10">Your cart is currently empty.</p>
+            <p class="text-gray-500 dark:text-gray-400 italic text-center mt-10">Your cart is currently empty.</p>
         </div>
-        <div class="p-6 border-t border-gray-100 bg-gray-50">
-            <div class="flex justify-between mb-4 font-bold text-lg">
+        <div class="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
+            <div class="flex justify-between mb-4 font-bold text-lg dark:text-white">
                 <span>Subtotal</span>
                 <span id="cart-subtotal">$0.00</span>
             </div>
@@ -114,49 +144,49 @@
     </div>
     <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-[55]"></div>
 
-    <section id="faq" class="pt-32 pb-20 bg-gray-50 min-h-[calc(100vh-200px)] flex flex-col justify-center">
+    <section id="faq" class="pt-32 pb-20 bg-gray-50 dark:bg-gray-800/30 min-h-[calc(100vh-200px)] flex flex-col justify-center transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 class="text-4xl font-bold text-securaDark mb-10 text-center">Frequently Asked Questions</h1>
+            <h1 class="text-4xl font-bold text-securaDark dark:text-white mb-10 text-center">Frequently Asked Questions</h1>
             
             <div class="space-y-6">
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h3 class="text-xl font-semibold text-securaPurple mb-3">What is Ki-Liner?</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         Ki-Liner is a discreet, ultra-thin liner designed to sit at the bottom of a cup and add an extra layer of protection in social environments without changing the drinking experience.
                     </p>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h3 class="text-xl font-semibold text-securaPurple mb-3">How does Ki-Liner work?</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         Ki-Liner is designed to interact at the surface level within the drink environment, helping to disrupt or limit unwanted alterations while remaining invisible to the user.
                     </p>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h3 class="text-xl font-semibold text-securaPurple mb-3">Will Ki-Liner affect the taste or smell of my drink?</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         No. Ki-Liner is engineered to be neutral, meaning it does not change the taste, smell, or appearance of your drink.
                     </p>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h3 class="text-xl font-semibold text-securaPurple mb-3">Is Ki-Liner visible inside the cup?</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         Ki-Liner is transparent and sits flat at the bottom of the cup, making it virtually unnoticeable during normal use.
                     </p>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h3 class="text-xl font-semibold text-securaPurple mb-3">Who can use Ki-Liner?</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         Ki-Liner is designed for individuals, bars, nightclubs, event organizers, and institutions looking to add an extra layer of safety in social settings.
                     </p>
                 </div>
 
-                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
                     <h3 class="text-xl font-semibold text-securaPurple mb-3">Can I order Ki-Liner in bulk for my business or event?</h3>
-                    <p class="text-gray-600 leading-relaxed">
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         Yes. Secura Labs offers bulk ordering and partnership opportunities for venues, organizations, and distributors. You can contact us directly for custom pricing.
                     </p>
                 </div>
@@ -164,7 +194,7 @@
         </div>
     </section>
 
-    <footer class="bg-white border-t border-gray-200 py-12">
+    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0">
                 <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-14 w-auto object-contain mb-2">
@@ -177,11 +207,11 @@
             </div>
         </div>
         <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
             <p>&copy; 2026 SecuraLabs. All rights reserved.</p>
             <div class="space-x-4 mt-4 md:mt-0">
-                <a href="#" class="hover:text-gray-900">Privacy Policy</a>
-                <a href="#" class="hover:text-gray-900">Terms of Service</a>
+                <a href="#" class="hover:text-gray-900 dark:hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-gray-900 dark:hover:text-white">Terms of Service</a>
             </div>
         </div>
     </footer>
