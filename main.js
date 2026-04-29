@@ -37,10 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartSubtotalEl = document.getElementById('cart-subtotal');
     
     let cart = JSON.parse(localStorage.getItem('securaCart')) || [];
+    // Normalize existing cart items to ensure they have a quantity
+    cart = cart.map(item => ({ ...item, quantity: item.quantity || 1 }));
+
+    function saveCart() {
+        localStorage.setItem('securaCart', JSON.stringify(cart));
+    }
 
     function updateCartUI() {
-        let cartCount = cart.length;
-        let subtotal = cart.reduce((sum, item) => sum + parseFloat(item.price), 0);
+        let cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        let subtotal = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
 
         [cartCounter, mobileCartCounter].forEach(counter => {
             if (counter) {
@@ -57,15 +63,28 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsContainer.innerHTML = '<p class="text-gray-500 italic text-center mt-10">Your cart is currently empty.</p>';
         } else if (cartItemsContainer) {
             cartItemsContainer.innerHTML = '';
-            cart.forEach(item => {
+            cart.forEach((item, index) => {
                 const itemRow = document.createElement('div');
                 itemRow.className = 'flex justify-between items-center border-b border-gray-100 pb-4';
                 itemRow.innerHTML = `
-                    <div>
-                        <h4 class="font-bold text-gray-800 text-sm">${item.productName}</h4>
-                        <span class="text-xs text-gray-500">Qty: 1</span>
+                    <div class="flex-1 pr-4">
+                        <h4 class="font-bold text-gray-800 text-sm mb-2">${item.productName}</h4>
+                        <div class="flex items-center space-x-3">
+                            <div class="flex items-center border border-gray-200 rounded">
+                                <button class="decrease-qty px-2 py-0.5 text-gray-500 hover:bg-gray-100 transition" data-index="${index}">
+                                    <i class="fa-solid fa-minus text-xs"></i>
+                                </button>
+                                <span class="text-xs font-semibold px-2 w-6 text-center">${item.quantity}</span>
+                                <button class="increase-qty px-2 py-0.5 text-gray-500 hover:bg-gray-100 transition" data-index="${index}">
+                                    <i class="fa-solid fa-plus text-xs"></i>
+                                </button>
+                            </div>
+                            <button class="remove-item text-gray-400 hover:text-red-500 transition text-sm" data-index="${index}" title="Remove item">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="font-bold text-securaPurple">$${item.price}</div>
+                    <div class="font-bold text-securaPurple whitespace-nowrap">$${(parseFloat(item.price) * item.quantity).toFixed(2)}</div>
                 `;
                 cartItemsContainer.appendChild(itemRow);
             });
@@ -74,6 +93,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cartSubtotalEl) {
             cartSubtotalEl.textContent = `$${subtotal.toFixed(2)}`;
         }
+    }
+
+    // Add event delegation for cart buttons
+    if (cartItemsContainer) {
+        cartItemsContainer.addEventListener('click', (e) => {
+            const btn = e.target.closest('button');
+            if (!btn) return;
+            
+            const index = parseInt(btn.getAttribute('data-index'), 10);
+            if (isNaN(index)) return;
+
+            if (btn.classList.contains('increase-qty')) {
+                cart[index].quantity++;
+                saveCart();
+                updateCartUI();
+            } else if (btn.classList.contains('decrease-qty')) {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                } else {
+                    cart.splice(index, 1);
+                }
+                saveCart();
+                updateCartUI();
+            } else if (btn.classList.contains('remove-item')) {
+                cart.splice(index, 1);
+                saveCart();
+                updateCartUI();
+            }
+        });
     }
 
     // Initialize UI
@@ -91,8 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
 
     window.addToCart = function(productName, price) {
-        cart.push({productName, price});
-        localStorage.setItem('securaCart', JSON.stringify(cart));
+        const existingItem = cart.find(item => item.productName === productName && item.price === price);
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({productName, price, quantity: 1});
+        }
+        
+        saveCart();
         updateCartUI();
 
         [cartCounter, mobileCartCounter].forEach(counter => {

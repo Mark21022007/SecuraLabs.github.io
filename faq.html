@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | SecuraLabs</title>
+    <title>FAQ | SecuraLabs</title>
     <link rel="icon" type="image/png" href="img/Secura Logoicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -57,11 +57,10 @@
 
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Home</a>
-                    <a href="about.html" class="text-securaPurple font-medium transition">About Us</a>
+                    <a href="about.html" class="text-gray-600 hover:text-securaPurple font-medium transition">About Us</a>
                     <a href="shop.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Shop</a>
-                    <a href="faq.html" class="text-gray-600 hover:text-securaPurple font-medium transition">FAQ</a>
-                    <a href="contact.html"
-                        class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
+                    <a href="faq.html" class="text-securaPurple font-medium transition">FAQ</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
 
                     <a href="#" id="cart-icon-btn" class="text-gray-600 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
@@ -88,9 +87,9 @@
     <div id="mobile-nav-sheet"
         class="hidden fixed inset-0 z-40 bg-white pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl">
         <a href="index.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Home</a>
-        <a href="about.html" class="text-securaPurple border-b pb-4">About Us</a>
+        <a href="about.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">About Us</a>
         <a href="shop.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Shop</a>
-        <a href="faq.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">FAQ</a>
+        <a href="faq.html" class="text-securaPurple border-b pb-4">FAQ</a>
         <a href="contact.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Contact</a>
     </div>
 
@@ -115,42 +114,51 @@
     </div>
     <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-[55]"></div>
 
-    <section id="about" class="pt-32 pb-20 bg-gray-50 min-h-[calc(100vh-200px)] flex flex-col justify-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2 text-center md:text-left">
-                <h2 class="text-4xl font-bold text-securaDark mb-6">Who are we?</h2>
-                <p class="text-lg text-gray-600 leading-relaxed text-justify">
-                    At Secura Labs, we are driven by one simple idea: social environments should feel as safe as they are enjoyable. Founded by a group of forward-thinking students with a passion for innovation and real-world impact, our mission is to create solutions that add an extra layer of confidence without disrupting everyday experiences. Our flagship product, Ki-Liner, was developed to address a growing concern in nightlife and social settings by offering a discreet, seamless way to help reduce the risk of drink tampering. We focus on combining modern design, practical functionality, and responsible innovation to create products that work in the background while people stay present in the moment. At Secura Labs, we are not just building products—we are shaping a safer standard for social spaces worldwide.
-                </p>
-            </div>
-            <div class="md:w-1/2">
-                <div class="rounded-3xl shadow-2xl overflow-hidden border border-gray-100 bg-white">
-                    <img src="img/about%20us%20img.png" alt="About Secura Labs" class="w-full h-auto object-cover">
+    <section id="faq" class="pt-32 pb-20 bg-gray-50 min-h-[calc(100vh-200px)] flex flex-col justify-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold text-securaDark mb-10 text-center">Frequently Asked Questions</h1>
+            
+            <div class="space-y-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-securaPurple mb-3">What is Ki-Liner?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Ki-Liner is a discreet, ultra-thin liner designed to sit at the bottom of a cup and add an extra layer of protection in social environments without changing the drinking experience.
+                    </p>
                 </div>
-            </div>
-        </div>
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-securaDark mb-6">Engineering Peace of Mind.</h2>
-                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Our mission is to shift the burden of safety. For too long, individuals have relied on reactive
-                    detection methods like test strips. We are transitioning the industry to passive intervention.
-                </p>
-                <div class="bg-white p-8 rounded-2xl shadow-sm text-left relative overflow-hidden">
-                    <div class="absolute right-0 top-0 opacity-5 text-9xl text-securaPurple"><i
-                            class="fa-solid fa-flask"></i></div>
-                    <h3 class="text-2xl font-semibold text-securaPurple mb-6 relative z-10">The Technology</h3>
-                    <ul class="space-y-4 text-gray-600 relative z-10 font-medium">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> 100%
-                            Food-grade materials.</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i>
-                            Non-ingestive micro-encapsulation.</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> No
-                            electronics or batteries required.</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> Zero user
-                            activation needed.</li>
-                    </ul>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-securaPurple mb-3">How does Ki-Liner work?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Ki-Liner is designed to interact at the surface level within the drink environment, helping to disrupt or limit unwanted alterations while remaining invisible to the user.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-securaPurple mb-3">Will Ki-Liner affect the taste or smell of my drink?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        No. Ki-Liner is engineered to be neutral, meaning it does not change the taste, smell, or appearance of your drink.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-securaPurple mb-3">Is Ki-Liner visible inside the cup?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Ki-Liner is transparent and sits flat at the bottom of the cup, making it virtually unnoticeable during normal use.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-securaPurple mb-3">Who can use Ki-Liner?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Ki-Liner is designed for individuals, bars, nightclubs, event organizers, and institutions looking to add an extra layer of safety in social settings.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="text-xl font-semibold text-securaPurple mb-3">Can I order Ki-Liner in bulk for my business or event?</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Yes. Secura Labs offers bulk ordering and partnership opportunities for venues, organizations, and distributors. You can contact us directly for custom pricing.
+                    </p>
                 </div>
             </div>
         </div>
