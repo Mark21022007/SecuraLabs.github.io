@@ -65,26 +65,26 @@ document.addEventListener('DOMContentLoaded', () => {
             cartItemsContainer.innerHTML = '';
             cart.forEach((item, index) => {
                 const itemRow = document.createElement('div');
-                itemRow.className = 'flex justify-between items-center border-b border-gray-100 pb-4';
+                itemRow.className = 'flex justify-between items-center border-b border-gray-100 dark:border-gray-700 pb-4';
                 itemRow.innerHTML = `
                     <div class="flex-1 pr-4">
-                        <h4 class="font-bold text-gray-800 text-sm mb-2">${item.productName}</h4>
+                        <h4 class="font-bold text-gray-800 dark:text-white text-sm mb-2">${item.productName}</h4>
                         <div class="flex items-center space-x-3">
-                            <div class="flex items-center border border-gray-200 rounded">
-                                <button class="decrease-qty px-2 py-0.5 text-gray-500 hover:bg-gray-100 transition" data-index="${index}">
+                            <div class="flex items-center border border-gray-200 dark:border-gray-600 rounded">
+                                <button class="decrease-qty px-2 py-0.5 text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-index="${index}">
                                     <i class="fa-solid fa-minus text-xs"></i>
                                 </button>
-                                <span class="text-xs font-semibold px-2 w-6 text-center">${item.quantity}</span>
-                                <button class="increase-qty px-2 py-0.5 text-gray-500 hover:bg-gray-100 transition" data-index="${index}">
+                                <span class="text-xs font-semibold px-2 w-6 text-center dark:text-white">${item.quantity}</span>
+                                <button class="increase-qty px-2 py-0.5 text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-index="${index}">
                                     <i class="fa-solid fa-plus text-xs"></i>
                                 </button>
                             </div>
-                            <button class="remove-item text-gray-400 hover:text-red-500 transition text-sm" data-index="${index}" title="Remove item">
+                            <button class="remove-item text-gray-400 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition text-sm" data-index="${index}" title="Remove item">
                                 <i class="fa-solid fa-trash-can"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="font-bold text-securaPurple whitespace-nowrap">$${(parseFloat(item.price) * item.quantity).toFixed(2)}</div>
+                    <div class="font-bold text-securaPurple dark:text-purple-300 whitespace-nowrap">$${(parseFloat(item.price) * item.quantity).toFixed(2)}</div>
                 `;
                 cartItemsContainer.appendChild(itemRow);
             });
