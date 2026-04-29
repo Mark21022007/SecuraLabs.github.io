@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop | SecuraLabs</title>
-    <link rel="icon" type="image/png" href="Img/Secura Logoicon.png">
+    <link rel="icon" type="image/png" href="img/Secura Logoicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -27,11 +28,22 @@
         }
     </script>
     <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; color: #1f2937; }
-        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
     </style>
 </head>
+
 <body class="bg-white antialiased overflow-x-hidden">
 
     <nav class="fixed w-full z-50 glass-nav shadow-sm border-b border-gray-100">
@@ -39,26 +51,31 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center cursor-pointer">
                     <a href="index.html" class="flex items-center">
-                        <img src="Img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-12 w-auto object-contain">
+                        <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-12 w-auto object-contain">
                     </a>
                 </div>
-                
+
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Home</a>
-                    <a href="about.html" class="text-gray-600 hover:text-securaPurple font-medium transition">About Us</a>
+                    <a href="about.html" class="text-gray-600 hover:text-securaPurple font-medium transition">About
+                        Us</a>
                     <a href="shop.html" class="text-securaPurple font-medium transition">Shop</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
-                    
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
+
                     <a href="#" id="cart-icon-btn" class="text-gray-600 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
-                        <span id="cart-counter" class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
+                        <span id="cart-counter"
+                            class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
                     </a>
                 </div>
 
                 <div class="md:hidden flex items-center space-x-6">
-                    <a href="#" id="mobile-cart-icon-btn" class="text-gray-600 hover:text-securaCoral transition relative">
+                    <a href="#" id="mobile-cart-icon-btn"
+                        class="text-gray-600 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
-                        <span id="mobile-cart-counter" class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
+                        <span id="mobile-cart-counter"
+                            class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
                     </a>
                     <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
@@ -68,14 +85,16 @@
         </div>
     </nav>
 
-    <div id="mobile-nav-sheet" class="hidden fixed inset-0 z-40 bg-white pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl">
+    <div id="mobile-nav-sheet"
+        class="hidden fixed inset-0 z-40 bg-white pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl">
         <a href="index.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Home</a>
         <a href="about.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">About Us</a>
         <a href="shop.html" class="text-securaPurple border-b pb-4">Shop</a>
         <a href="contact.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Contact</a>
     </div>
 
-    <div id="cart-drawer" class="hidden fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[60] flex flex-col border-l border-gray-200">
+    <div id="cart-drawer"
+        class="hidden fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[60] flex flex-col border-l border-gray-200">
         <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-securaLight">
             <h2 class="text-xl font-bold text-securaDark">Your Cart</h2>
             <button id="close-cart-btn" class="text-gray-400 hover:text-securaCoral text-2xl">&times;</button>
@@ -88,7 +107,9 @@
                 <span>Subtotal</span>
                 <span id="cart-subtotal">$0.00</span>
             </div>
-            <button class="w-full bg-securaPurple text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow">Secure Checkout</button>
+            <button
+                class="w-full bg-securaPurple text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow">Secure
+                Checkout</button>
         </div>
     </div>
     <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-[55]"></div>
@@ -101,16 +122,18 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 flex flex-col">
+                <div
+                    class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 flex flex-col">
                     <div class="h-48 bg-securaLight rounded-xl mb-6 flex items-center justify-center">
                         <i class="fa-solid fa-snowflake text-4xl text-securaPurple"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-securaDark mb-2">Ki-Liner Standard™</h3>
                     <p class="text-gray-500 mb-6 text-sm">Optimized for cold beverages and standard cup sizes.</p>
-                    
+
                     <div class="mb-5">
                         <label class="block text-gray-700 text-sm font-semibold mb-2">Cup Size:</label>
-                        <select id="size-standard" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white appearance-none cursor-pointer">
+                        <select id="size-standard"
+                            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white appearance-none cursor-pointer">
                             <option value="8-12oz">8 - 12 oz</option>
                             <option value="14-18oz">14 - 18 oz</option>
                             <option value="20-24oz">20 - 24 oz</option>
@@ -119,31 +142,42 @@
 
                     <div class="flex-grow space-y-4 mb-2">
                         <label class="block text-gray-700 text-sm font-semibold mb-2">Select Pack:</label>
-                        <button data-product="Ki-Liner Standard (10-Pack)" data-price="6.99" data-size-target="size-standard" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaPurple hover:bg-purple-50 transition group">
+                        <button data-product="Ki-Liner Standard (10-Pack)" data-price="6.99"
+                            data-size-target="size-standard"
+                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaPurple hover:bg-purple-50 transition group">
                             <span class="font-medium text-gray-700">10-Pack</span>
-                            <span class="text-securaPurple font-bold">$6.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                            <span class="text-securaPurple font-bold">$6.99 <i
+                                    class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
                         </button>
-                        <button data-product="Ki-Liner Standard (25-Pack)" data-price="13.99" data-size-target="size-standard" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaPurple hover:bg-purple-50 transition group">
+                        <button data-product="Ki-Liner Standard (25-Pack)" data-price="13.99"
+                            data-size-target="size-standard"
+                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaPurple hover:bg-purple-50 transition group">
                             <span class="font-medium text-gray-700">25-Pack</span>
-                            <span class="text-securaPurple font-bold">$13.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                            <span class="text-securaPurple font-bold">$13.99 <i
+                                    class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
                         </button>
-                        <button data-product="Ki-Liner Standard (50-Pack)" data-price="24.99" data-size-target="size-standard" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaPurple hover:bg-purple-50 transition group">
+                        <button data-product="Ki-Liner Standard (50-Pack)" data-price="24.99"
+                            data-size-target="size-standard"
+                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaPurple hover:bg-purple-50 transition group">
                             <span class="font-medium text-gray-700">50-Pack</span>
-                            <span class="text-securaPurple font-bold">$24.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                            <span class="text-securaPurple font-bold">$24.99 <i
+                                    class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
                         </button>
                     </div>
                 </div>
 
-                <div class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 flex flex-col">
+                <div
+                    class="bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 flex flex-col">
                     <div class="h-48 bg-orange-50 rounded-xl mb-6 flex items-center justify-center">
                         <i class="fa-solid fa-mug-hot text-4xl text-securaCoral"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-securaDark mb-2">Ki-Liner Thermal™</h3>
                     <p class="text-gray-500 mb-6 text-sm">Heat-resistant smart liners designed for hot beverages.</p>
-                    
+
                     <div class="mb-5">
                         <label class="block text-gray-700 text-sm font-semibold mb-2">Cup Size:</label>
-                        <select id="size-thermal" class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-securaCoral focus:ring-1 focus:ring-securaCoral bg-white appearance-none cursor-pointer">
+                        <select id="size-thermal"
+                            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-securaCoral focus:ring-1 focus:ring-securaCoral bg-white appearance-none cursor-pointer">
                             <option value="8-12oz">8 - 12 oz</option>
                             <option value="14-18oz">14 - 18 oz</option>
                             <option value="20-24oz">20 - 24 oz</option>
@@ -152,27 +186,40 @@
 
                     <div class="flex-grow space-y-4 mb-2">
                         <label class="block text-gray-700 text-sm font-semibold mb-2">Select Pack:</label>
-                        <button data-product="Ki-Liner Thermal (10-Pack)" data-price="7.99" data-size-target="size-thermal" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaCoral hover:bg-orange-50 transition group">
+                        <button data-product="Ki-Liner Thermal (10-Pack)" data-price="7.99"
+                            data-size-target="size-thermal"
+                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaCoral hover:bg-orange-50 transition group">
                             <span class="font-medium text-gray-700">10-Pack</span>
-                            <span class="text-securaCoral font-bold">$7.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                            <span class="text-securaCoral font-bold">$7.99 <i
+                                    class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
                         </button>
-                        <button data-product="Ki-Liner Thermal (25-Pack)" data-price="15.99" data-size-target="size-thermal" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaCoral hover:bg-orange-50 transition group">
+                        <button data-product="Ki-Liner Thermal (25-Pack)" data-price="15.99"
+                            data-size-target="size-thermal"
+                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaCoral hover:bg-orange-50 transition group">
                             <span class="font-medium text-gray-700">25-Pack</span>
-                            <span class="text-securaCoral font-bold">$15.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                            <span class="text-securaCoral font-bold">$15.99 <i
+                                    class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
                         </button>
-                        <button data-product="Ki-Liner Thermal (50-Pack)" data-price="27.99" data-size-target="size-thermal" class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaCoral hover:bg-orange-50 transition group">
+                        <button data-product="Ki-Liner Thermal (50-Pack)" data-price="27.99"
+                            data-size-target="size-thermal"
+                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border rounded-xl hover:border-securaCoral hover:bg-orange-50 transition group">
                             <span class="font-medium text-gray-700">50-Pack</span>
-                            <span class="text-securaCoral font-bold">$27.99 <i class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
+                            <span class="text-securaCoral font-bold">$27.99 <i
+                                    class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition"></i></span>
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-16 bg-securaDark rounded-2xl p-8 md:p-12 text-center text-white shadow-xl relative overflow-hidden">
+            <div
+                class="mt-16 bg-securaDark rounded-2xl p-8 md:p-12 text-center text-white shadow-xl relative overflow-hidden">
                 <div class="relative z-10">
                     <h3 class="text-3xl font-bold mb-4">Venue, Bar, or University?</h3>
-                    <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Protect your patrons at scale. We offer bulk institutional partnerships and wholesale pricing for high-volume environments.</p>
-                    <a href="contact.html" class="inline-block bg-white text-securaDark font-bold py-3 px-8 rounded-full shadow hover:bg-gray-100 transition">Request Wholesale Pricing</a>
+                    <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Protect your patrons at scale. We offer bulk
+                        institutional partnerships and wholesale pricing for high-volume environments.</p>
+                    <a href="contact.html"
+                        class="inline-block bg-white text-securaDark font-bold py-3 px-8 rounded-full shadow hover:bg-gray-100 transition">Request
+                        Wholesale Pricing</a>
                 </div>
             </div>
         </div>
@@ -181,15 +228,17 @@
     <footer class="bg-white border-t border-gray-200 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0">
-                <img src="Img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-14 w-auto object-contain mb-2">
+                <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-14 w-auto object-contain mb-2">
             </div>
             <div class="flex space-x-6 text-gray-400">
                 <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
                 <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-twitter text-xl"></i></a>
-                <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-securaPurple transition"><i
+                        class="fa-brands fa-instagram text-xl"></i></a>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
             <p>&copy; 2026 SecuraLabs. All rights reserved.</p>
             <div class="space-x-4 mt-4 md:mt-0">
                 <a href="#" class="hover:text-gray-900">Privacy Policy</a>
@@ -200,4 +249,5 @@
 
     <script src="main.js"></script>
 </body>
+
 </html>

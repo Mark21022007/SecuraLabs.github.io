@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SecuraLabs | Safe · Simple · Reliable</title>
-    <link rel="icon" type="image/png" href="Img/Secura Logoicon.png">
+    <link rel="icon" type="image/png" href="img/Secura Logoicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -27,11 +28,22 @@
         }
     </script>
     <style>
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; color: #1f2937; }
-        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
     </style>
 </head>
+
 <body class="bg-white antialiased overflow-x-hidden">
 
     <nav class="fixed w-full z-50 glass-nav shadow-sm border-b border-gray-100">
@@ -39,26 +51,31 @@
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center cursor-pointer">
                     <a href="index.html" class="flex items-center">
-                        <img src="Img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-12 w-auto object-contain">
+                        <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-12 w-auto object-contain">
                     </a>
                 </div>
-                
+
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="index.html" class="text-securaPurple font-medium transition">Home</a>
-                    <a href="about.html" class="text-gray-600 hover:text-securaPurple font-medium transition">About Us</a>
+                    <a href="about.html" class="text-gray-600 hover:text-securaPurple font-medium transition">About
+                        Us</a>
                     <a href="shop.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Shop</a>
-                    <a href="contact.html" class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
-                    
+                    <a href="contact.html"
+                        class="text-gray-600 hover:text-securaPurple font-medium transition">Contact</a>
+
                     <a href="#" id="cart-icon-btn" class="text-gray-600 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
-                        <span id="cart-counter" class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
+                        <span id="cart-counter"
+                            class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
                     </a>
                 </div>
 
                 <div class="md:hidden flex items-center space-x-6">
-                    <a href="#" id="mobile-cart-icon-btn" class="text-gray-600 hover:text-securaCoral transition relative">
+                    <a href="#" id="mobile-cart-icon-btn"
+                        class="text-gray-600 hover:text-securaCoral transition relative">
                         <i class="fa-solid fa-cart-shopping text-xl"></i>
-                        <span id="mobile-cart-counter" class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
+                        <span id="mobile-cart-counter"
+                            class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
                     </a>
                     <button id="mobile-menu-btn" class="text-gray-600 focus:outline-none">
                         <i class="fa-solid fa-bars text-2xl"></i>
@@ -68,14 +85,16 @@
         </div>
     </nav>
 
-    <div id="mobile-nav-sheet" class="hidden fixed inset-0 z-40 bg-white pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl">
+    <div id="mobile-nav-sheet"
+        class="hidden fixed inset-0 z-40 bg-white pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl">
         <a href="index.html" class="text-securaPurple border-b pb-4">Home</a>
         <a href="about.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">About Us</a>
         <a href="shop.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Shop</a>
         <a href="contact.html" class="text-gray-800 hover:text-securaPurple border-b pb-4">Contact</a>
     </div>
 
-    <div id="cart-drawer" class="hidden fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[60] flex flex-col border-l border-gray-200">
+    <div id="cart-drawer"
+        class="hidden fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-[60] flex flex-col border-l border-gray-200">
         <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-securaLight">
             <h2 class="text-xl font-bold text-securaDark">Your Cart</h2>
             <button id="close-cart-btn" class="text-gray-400 hover:text-securaCoral text-2xl">&times;</button>
@@ -88,7 +107,9 @@
                 <span>Subtotal</span>
                 <span id="cart-subtotal">$0.00</span>
             </div>
-            <button class="w-full bg-securaPurple text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow">Secure Checkout</button>
+            <button
+                class="w-full bg-securaPurple text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow">Secure
+                Checkout</button>
         </div>
     </div>
     <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-[55]"></div>
@@ -96,18 +117,23 @@
     <section id="home" class="pt-32 pb-20 bg-securaLight min-h-[calc(100vh-300px)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 pr-0 md:pr-12 text-center md:text-left">
-                <span class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-4 block">Safe · Simple · Reliable</span>
+                <span class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-4 block">Safe · Simple
+                    · Reliable</span>
                 <h1 class="text-5xl font-bold leading-tight mb-6 text-securaDark">Make Drink Safety Automatic.</h1>
                 <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Invisible protection built into your everyday beverage. SecuraLabs shifts personal safety from reactive to proactive with the Ki-Liner.
+                    Invisible protection built into your everyday beverage. SecuraLabs shifts personal safety from
+                    reactive to proactive with the Ki-Liner.
                 </p>
-                <a href="shop.html" class="inline-block bg-securaPurple text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:bg-purple-700 hover:shadow-xl transition transform hover:-translate-y-1">
+                <a href="shop.html"
+                    class="inline-block bg-securaPurple text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:bg-purple-700 hover:shadow-xl transition transform hover:-translate-y-1">
                     Shop Ki-Liner
                 </a>
             </div>
             <div class="md:w-1/2 mt-12 md:mt-0 relative">
-                <div class="rounded-2xl shadow-2xl overflow-hidden bg-white border border-gray-100 h-96 flex items-center justify-center">
-                    <img src="Img/Kiliner Product.jpeg" alt="Clear Cup & Ki-Liner Visual" class="w-full h-full object-cover">
+                <div
+                    class="rounded-2xl shadow-2xl overflow-hidden bg-white border border-gray-100 h-96 flex items-center justify-center">
+                    <img src="img/Kiliner Product.jpeg" alt="Clear Cup & Ki-Liner Visual"
+                        class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -116,23 +142,34 @@
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold text-securaDark mb-4">The Threat is Real. The Solution is Invisible.</h2>
-            <p class="max-w-2xl mx-auto text-gray-600 mb-16">In crowded, low-visibility settings, drink tampering is a persistent threat. The Ki-Liner is the world's first passive, material-based safety system that detects abnormal chemical signatures and physically interrupts consumption.</p>
-            
+            <p class="max-w-2xl mx-auto text-gray-600 mb-16">In crowded, low-visibility settings, drink tampering is a
+                persistent threat. The Ki-Liner is the world's first passive, material-based safety system that detects
+                abnormal chemical signatures and physically interrupts consumption.</p>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div class="p-8 rounded-2xl bg-securaLight shadow-sm hover:shadow-md transition">
-                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaPurple text-2xl">1</div>
+                    <div
+                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaPurple text-2xl">
+                        1</div>
                     <h3 class="text-xl font-semibold mb-3">Pour Drink (Inactive)</h3>
-                    <p class="text-gray-600 text-sm">The invisible Ki-Liner lines your cup. During normal use, it remains completely inactive and undetected.</p>
+                    <p class="text-gray-600 text-sm">The invisible Ki-Liner lines your cup. During normal use, it
+                        remains completely inactive and undetected.</p>
                 </div>
                 <div class="p-8 rounded-2xl bg-securaLight shadow-sm hover:shadow-md transition">
-                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaCoral text-2xl">2</div>
+                    <div
+                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaCoral text-2xl">
+                        2</div>
                     <h3 class="text-xl font-semibold mb-3">Threat Detected</h3>
-                    <p class="text-gray-600 text-sm">If abnormal chemical signatures are introduced, the embedded material immediately reacts.</p>
+                    <p class="text-gray-600 text-sm">If abnormal chemical signatures are introduced, the embedded
+                        material immediately reacts.</p>
                 </div>
                 <div class="p-8 rounded-2xl bg-securaLight shadow-sm hover:shadow-md transition">
-                    <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-red-500 text-2xl"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div
+                        class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 shadow text-red-500 text-2xl">
+                        <i class="fa-solid fa-shield-halved"></i></div>
                     <h3 class="text-xl font-semibold mb-3">Gel-Lock Activated</h3>
-                    <p class="text-gray-600 text-sm">A localized chemical reaction alters the liner's structure, creating a gel-lock that physically interrupts consumption.</p>
+                    <p class="text-gray-600 text-sm">A localized chemical reaction alters the liner's structure,
+                        creating a gel-lock that physically interrupts consumption.</p>
                 </div>
             </div>
         </div>
@@ -141,15 +178,17 @@
     <footer class="bg-white border-t border-gray-200 py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-6 md:mb-0">
-                <img src="Img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-14 w-auto object-contain mb-2">
+                <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-14 w-auto object-contain mb-2">
             </div>
             <div class="flex space-x-6 text-gray-400">
                 <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
                 <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-twitter text-xl"></i></a>
-                <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-securaPurple transition"><i
+                        class="fa-brands fa-instagram text-xl"></i></a>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
             <p>&copy; 2026 SecuraLabs. All rights reserved.</p>
             <div class="space-x-4 mt-4 md:mt-0">
                 <a href="#" class="hover:text-gray-900">Privacy Policy</a>
@@ -160,4 +199,5 @@
 
     <script src="main.js"></script>
 </body>
+
 </html>
