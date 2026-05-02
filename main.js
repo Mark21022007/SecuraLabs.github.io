@@ -138,6 +138,74 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeCartBtn) closeCartBtn.addEventListener('click', toggleCart);
     if (cartOverlay) cartOverlay.addEventListener('click', toggleCart);
 
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes kiliner-drop {
+                0% { opacity: 0; transform: translate(-50%, -150%); }
+                10% { opacity: 1; transform: translate(-50%, -150%); }
+                25% { opacity: 1; transform: translate(-50%, -30%); }
+                30% { opacity: 0; transform: translate(-50%, -20%); }
+                100% { opacity: 0; transform: translate(-50%, -20%); }
+            }
+            @keyframes open-box {
+                0%, 30% { opacity: 1; transform: translate(-50%, 0%); }
+                31%, 100% { opacity: 0; transform: translate(-50%, 0%); }
+            }
+            @keyframes closed-box {
+                0%, 30% { opacity: 0; transform: translate(-50%, 0%); }
+                31%, 45% { opacity: 1; transform: translate(-50%, 0%); }
+                48% { opacity: 1; transform: translate(-50%, -20%); }
+                51%, 100% { opacity: 0; transform: translate(-50%, 0%); }
+            }
+            @keyframes truck-drive {
+                0%, 35% { transform: translate(-250%, 0%); }
+                45%, 55% { transform: translate(-50%, 0%); }
+                65%, 100% { transform: translate(250%, 0%); }
+            }
+            .kiliner-icon { animation: kiliner-drop 4s infinite; left: 50%; top: 50%; z-index: 10; }
+            .open-box-icon { animation: open-box 4s infinite; left: 50%; top: 50%; z-index: 5; }
+            .closed-box-icon { animation: closed-box 4s infinite; left: 50%; top: 50%; z-index: 5; }
+            .truck-icon { animation: truck-drive 4s infinite; left: 50%; top: 50%; z-index: 20; }
+        `;
+        document.head.appendChild(style);
+
+        const popupHTML = `
+        <div id="checkout-popup" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[70] flex items-center justify-center backdrop-blur-sm transition-opacity duration-300">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-sm w-full mx-4 shadow-2xl flex flex-col items-center text-center">
+                <h3 class="text-2xl font-bold text-securaDark dark:text-white mb-6">The delivery is preparing...</h3>
+                <div class="relative w-40 h-32 mb-6 overflow-hidden flex items-center justify-center bg-securaLight dark:bg-gray-700 rounded-2xl">
+                    <img src="img/Secura Logoicon.png" class="w-8 h-8 object-contain absolute kiliner-icon drop-shadow-md" alt="Secura Logo">
+                    <i class="fa-solid fa-box-open text-5xl text-securaPurple absolute open-box-icon"></i>
+                    <i class="fa-solid fa-box text-5xl text-securaPurple absolute closed-box-icon"></i>
+                    <i class="fa-solid fa-truck-fast text-6xl text-securaDark dark:text-white absolute truck-icon"></i>
+                </div>
+                <button id="close-popup-btn" class="mt-4 px-6 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg font-medium transition w-full">Close</button>
+            </div>
+        </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', popupHTML);
+        
+        const popup = document.getElementById('checkout-popup');
+        const closePopupBtn = document.getElementById('close-popup-btn');
+
+        closePopupBtn.addEventListener('click', () => {
+            popup.classList.add('hidden');
+        });
+
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) return;
+            
+            cart = [];
+            saveCart();
+            updateCartUI();
+            toggleCart();
+            
+            popup.classList.remove('hidden');
+        });
+    }
+
     window.addToCart = function(productName, price) {
         const existingItem = cart.find(item => item.productName === productName && item.price === price);
         if (existingItem) {
