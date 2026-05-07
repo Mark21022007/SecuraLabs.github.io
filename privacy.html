@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | SecuraLabs</title>
+    <link rel="icon" type="image/png" href="img/Secura Logoicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        securaPurple: '#875cb6',
+                        securaCoral: '#F19C7C',
+                        securaDark: '#1f2937',
+                        securaLight: '#f9fafb'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        try {
+            const urlParams = new URLSearchParams(window.location.search);
+            let theme = urlParams.get('theme') || localStorage.getItem('theme');
+            if (theme && urlParams.get('theme')) {
+                try { localStorage.setItem('theme', theme); } catch(e) {}
+            }
+            if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        } catch(e) {}
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #1f2937; }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-gray-900 antialiased overflow-x-hidden transition-colors duration-300">
+    <div id="site-header"></div>
+    <div id="cart-root"></div>
+
+    <main class="pt-32 pb-20 bg-securaLight dark:bg-gray-800/30 min-h-[calc(100vh-200px)] transition-colors duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl font-bold text-securaDark dark:text-white mb-6">Privacy Policy</h1>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-gray-700 space-y-6 text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p>SecuraLabs collects information you submit through contact, wholesale, and order-request forms, such as your name, email address, organization, shipping details, and inquiry details.</p>
+                <p>We use this information to respond to requests, manage order inquiries, support partnership discussions, and improve our website experience.</p>
+                <p>SecuraLabs does not sell personal information. Information may be shared with service providers only when needed to operate the website, respond to inquiries, or fulfill requested services.</p>
+                <p>To request access, correction, or deletion of your information, contact SecuraLabs through the contact page.</p>
+            </div>
+        </div>
+    </main>
+
+    <div id="site-footer"></div>
+    <script src="layout.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>

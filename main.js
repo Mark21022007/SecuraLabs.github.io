@@ -10,9 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenuBtn.addEventListener('click', (e) => {
             e.preventDefault();
             mobileNavSheet.classList.toggle('hidden');
+            const isOpen = !mobileNavSheet.classList.contains('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+            mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+            mobileNavSheet.setAttribute('aria-hidden', String(!isOpen));
             
             const icon = mobileMenuBtn.querySelector('i');
-            if (mobileNavSheet.classList.contains('hidden')) {
+            if (!isOpen) {
                 icon.classList.remove('fa-xmark');
                 icon.classList.add('fa-bars');
             } else {
@@ -72,15 +76,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="flex items-center space-x-3">
                             <div class="flex items-center border border-gray-200 dark:border-gray-600 rounded">
                                 <button class="decrease-qty px-2 py-0.5 text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-index="${index}">
-                                    <i class="fa-solid fa-minus text-xs"></i>
+                                    <i class="fa-solid fa-minus text-xs" aria-hidden="true"></i>
                                 </button>
                                 <span class="text-xs font-semibold px-2 w-6 text-center dark:text-white">${item.quantity}</span>
                                 <button class="increase-qty px-2 py-0.5 text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-index="${index}">
-                                    <i class="fa-solid fa-plus text-xs"></i>
+                                    <i class="fa-solid fa-plus text-xs" aria-hidden="true"></i>
                                 </button>
                             </div>
                             <button class="remove-item text-gray-400 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition text-sm" data-index="${index}" title="Remove item">
-                                <i class="fa-solid fa-trash-can"></i>
+                                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
@@ -127,10 +131,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize UI
     updateCartUI();
 
+    const cartToggleButtons = [cartIconBtn, mobileCartIconBtn].filter(Boolean);
+
+    const setCartOpen = (isOpen) => {
+        if (cartDrawer) {
+            cartDrawer.classList.toggle('hidden', !isOpen);
+            cartDrawer.setAttribute('aria-hidden', String(!isOpen));
+        }
+        if (cartOverlay) {
+            cartOverlay.classList.toggle('hidden', !isOpen);
+        }
+        cartToggleButtons.forEach(btn => {
+            btn.setAttribute('aria-expanded', String(isOpen));
+            btn.setAttribute('aria-label', isOpen ? 'Close cart' : 'Open cart');
+        });
+    };
+
     const toggleCart = (e) => {
         if(e) e.preventDefault();
-        if (cartDrawer) cartDrawer.classList.toggle('hidden');
-        if (cartOverlay) cartOverlay.classList.toggle('hidden');
+        const isOpen = cartDrawer ? cartDrawer.classList.contains('hidden') : false;
+        setCartOpen(isOpen);
     };
 
     if (cartIconBtn) cartIconBtn.addEventListener('click', toggleCart);
@@ -140,69 +160,216 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const checkoutBtn = document.getElementById('checkout-btn');
     if (checkoutBtn) {
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes kiliner-drop {
-                0% { opacity: 0; transform: translate(-50%, -150%); }
-                10% { opacity: 1; transform: translate(-50%, -150%); }
-                25% { opacity: 1; transform: translate(-50%, -30%); }
-                30% { opacity: 0; transform: translate(-50%, -20%); }
-                100% { opacity: 0; transform: translate(-50%, -20%); }
-            }
-            @keyframes open-box {
-                0%, 30% { opacity: 1; transform: translate(-50%, 0%); }
-                31%, 100% { opacity: 0; transform: translate(-50%, 0%); }
-            }
-            @keyframes closed-box {
-                0%, 30% { opacity: 0; transform: translate(-50%, 0%); }
-                31%, 45% { opacity: 1; transform: translate(-50%, 0%); }
-                48% { opacity: 1; transform: translate(-50%, -20%); }
-                51%, 100% { opacity: 0; transform: translate(-50%, 0%); }
-            }
-            @keyframes truck-drive {
-                0%, 35% { transform: translate(-250%, 0%); }
-                45%, 55% { transform: translate(-50%, 0%); }
-                65%, 100% { transform: translate(250%, 0%); }
-            }
-            .kiliner-icon { animation: kiliner-drop 4s infinite; left: 50%; top: 50%; z-index: 10; }
-            .open-box-icon { animation: open-box 4s infinite; left: 50%; top: 50%; z-index: 5; }
-            .closed-box-icon { animation: closed-box 4s infinite; left: 50%; top: 50%; z-index: 5; }
-            .truck-icon { animation: truck-drive 4s infinite; left: 50%; top: 50%; z-index: 20; }
-        `;
-        document.head.appendChild(style);
-
-        const popupHTML = `
-        <div id="checkout-popup" class="hidden fixed inset-0 bg-black bg-opacity-50 z-[70] flex items-center justify-center backdrop-blur-sm transition-opacity duration-300">
-            <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-sm w-full mx-4 shadow-2xl flex flex-col items-center text-center">
-                <h3 class="text-2xl font-bold text-securaDark dark:text-white mb-6">The delivery is preparing...</h3>
-                <div class="relative w-40 h-32 mb-6 overflow-hidden flex items-center justify-center bg-securaLight dark:bg-gray-700 rounded-2xl">
-                    <img src="img/Secura Logoicon.png" class="w-8 h-8 object-contain absolute kiliner-icon drop-shadow-md" alt="Secura Logo">
-                    <i class="fa-solid fa-box-open text-5xl text-securaPurple absolute open-box-icon"></i>
-                    <i class="fa-solid fa-box text-5xl text-securaPurple absolute closed-box-icon"></i>
-                    <i class="fa-solid fa-truck-fast text-6xl text-securaDark dark:text-white absolute truck-icon"></i>
+        const checkoutHTML = `
+        <div id="checkout-modal" class="hidden fixed inset-0 bg-black/50 z-[70] items-center justify-center px-4 py-8 backdrop-blur-sm">
+            <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col border border-gray-200 dark:border-gray-700">
+                <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs font-bold tracking-widest uppercase text-securaCoral mb-1">Order request</p>
+                        <h3 class="text-2xl font-bold text-securaDark dark:text-white">Complete Your Order</h3>
+                    </div>
+                    <button id="close-checkout-btn" type="button" class="text-gray-400 hover:text-securaCoral text-2xl" aria-label="Close checkout">&times;</button>
                 </div>
-                <button id="close-popup-btn" class="mt-4 px-6 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white rounded-lg font-medium transition w-full">Close</button>
+
+                <div id="checkout-form-view" class="overflow-y-auto">
+                    <form id="checkout-form" class="grid grid-cols-1 lg:grid-cols-[1fr_22rem] gap-0">
+                        <div class="p-6 space-y-6">
+                            <div class="rounded-xl border border-purple-100 bg-purple-50 dark:bg-gray-800 dark:border-gray-700 p-4 text-sm text-gray-700 dark:text-gray-300">
+                                SecuraLabs reviews each request before confirming availability, payment, and fulfillment details.
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-securaDark dark:text-white mb-4">Contact</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="checkout-name" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Full name</label>
+                                        <input id="checkout-name" name="name" type="text" required autocomplete="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                    </div>
+                                    <div>
+                                        <label for="checkout-email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                                        <input id="checkout-email" name="email" type="email" required autocomplete="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-securaDark dark:text-white mb-4">Shipping</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
+                                    <div class="md:col-span-6">
+                                        <label for="checkout-address" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Address</label>
+                                        <input id="checkout-address" name="address" type="text" required autocomplete="shipping street-address" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                    </div>
+                                    <div class="md:col-span-3">
+                                        <label for="checkout-city" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">City</label>
+                                        <input id="checkout-city" name="city" type="text" required autocomplete="shipping address-level2" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                    </div>
+                                    <div class="md:col-span-1">
+                                        <label for="checkout-state" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">State</label>
+                                        <input id="checkout-state" name="state" type="text" required maxlength="2" autocomplete="shipping address-level1" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white uppercase">
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label for="checkout-zip" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">ZIP code</label>
+                                        <input id="checkout-zip" name="zip" type="text" required inputmode="numeric" autocomplete="shipping postal-code" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-bold text-securaDark dark:text-white mb-4">Order Type</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <label class="flex items-start gap-3 p-4 border border-securaPurple bg-purple-50 dark:bg-gray-800 dark:border-securaPurple rounded-xl cursor-pointer">
+                                        <input type="radio" name="payment" value="Direct order" checked class="mt-1 accent-securaPurple">
+                                        <span>
+                                            <span class="block font-semibold text-securaDark dark:text-white">Direct order</span>
+                                            <span class="block text-sm text-gray-600 dark:text-gray-400">For individual and small-pack requests.</span>
+                                        </span>
+                                    </label>
+                                    <label class="flex items-start gap-3 p-4 border border-gray-200 dark:border-gray-700 rounded-xl cursor-pointer">
+                                        <input type="radio" name="payment" value="Venue invoice" class="mt-1 accent-securaPurple">
+                                        <span>
+                                            <span class="block font-semibold text-securaDark dark:text-white">Venue invoice</span>
+                                            <span class="block text-sm text-gray-600 dark:text-gray-400">For bulk or institutional orders.</span>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="bg-securaLight dark:bg-gray-800/70 p-6 border-t lg:border-t-0 lg:border-l border-gray-100 dark:border-gray-800">
+                            <h4 class="font-bold text-securaDark dark:text-white mb-4">Order Summary</h4>
+                            <div id="checkout-items" class="space-y-4 mb-6"></div>
+                            <div class="space-y-3 text-sm border-t border-gray-200 dark:border-gray-700 pt-4">
+                                <div class="flex justify-between text-gray-600 dark:text-gray-300">
+                                    <span>Subtotal</span>
+                                    <span id="checkout-subtotal">$0.00</span>
+                                </div>
+                                <div class="flex justify-between text-gray-600 dark:text-gray-300">
+                                    <span>Shipping</span>
+                                    <span>Free</span>
+                                </div>
+                                <div class="flex justify-between text-lg font-bold text-securaDark dark:text-white border-t border-gray-200 dark:border-gray-700 pt-3">
+                                    <span>Total</span>
+                                    <span id="checkout-total">$0.00</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="mt-6 w-full bg-securaPurple text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow">Submit Order Request</button>
+                            <button id="back-to-cart-btn" type="button" class="mt-3 w-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 py-3 rounded-lg font-semibold hover:bg-white dark:hover:bg-gray-700 transition">Back to Cart</button>
+                        </aside>
+                    </form>
+                </div>
+
+                <div id="checkout-success-view" class="hidden p-8 text-center">
+                    <div class="w-16 h-16 bg-purple-100 dark:bg-gray-800 text-securaPurple rounded-full flex items-center justify-center mx-auto mb-5">
+                        <i class="fa-solid fa-check text-2xl" aria-hidden="true"></i>
+                    </div>
+                    <p class="text-xs font-bold tracking-widest uppercase text-securaCoral mb-2">Request received</p>
+                    <h3 class="text-3xl font-bold text-securaDark dark:text-white mb-3">Your order request is ready for review.</h3>
+                    <p id="checkout-confirmation-text" class="text-gray-600 dark:text-gray-300 max-w-xl mx-auto mb-6"></p>
+                    <button id="finish-checkout-btn" type="button" class="px-8 py-3 bg-securaPurple text-white rounded-lg font-semibold hover:bg-purple-700 transition">Done</button>
+                </div>
             </div>
         </div>
         `;
-        document.body.insertAdjacentHTML('beforeend', popupHTML);
-        
-        const popup = document.getElementById('checkout-popup');
-        const closePopupBtn = document.getElementById('close-popup-btn');
+        document.body.insertAdjacentHTML('beforeend', checkoutHTML);
 
-        closePopupBtn.addEventListener('click', () => {
-            popup.classList.add('hidden');
+        const checkoutModal = document.getElementById('checkout-modal');
+        const checkoutForm = document.getElementById('checkout-form');
+        const checkoutFormView = document.getElementById('checkout-form-view');
+        const checkoutSuccessView = document.getElementById('checkout-success-view');
+        const checkoutItems = document.getElementById('checkout-items');
+        const checkoutSubtotal = document.getElementById('checkout-subtotal');
+        const checkoutTotal = document.getElementById('checkout-total');
+        const checkoutConfirmationText = document.getElementById('checkout-confirmation-text');
+        const closeCheckoutBtn = document.getElementById('close-checkout-btn');
+        const backToCartBtn = document.getElementById('back-to-cart-btn');
+        const finishCheckoutBtn = document.getElementById('finish-checkout-btn');
+
+        const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (char) => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[char]));
+
+        function renderCheckoutSummary() {
+            const subtotal = cart.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
+            checkoutItems.innerHTML = cart.map(item => `
+                <div class="flex justify-between gap-4 text-sm">
+                    <div>
+                        <p class="font-semibold text-securaDark dark:text-white">${escapeHtml(item.productName)}</p>
+                        <p class="text-gray-500 dark:text-gray-400">Qty ${item.quantity}</p>
+                    </div>
+                    <p class="font-bold text-securaPurple whitespace-nowrap">$${(parseFloat(item.price) * item.quantity).toFixed(2)}</p>
+                </div>
+            `).join('');
+            checkoutSubtotal.textContent = `$${subtotal.toFixed(2)}`;
+            checkoutTotal.textContent = `$${subtotal.toFixed(2)}`;
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) {
+                return;
+            }
+
+            renderCheckoutSummary();
+            checkoutFormView.classList.remove('hidden');
+            checkoutSuccessView.classList.add('hidden');
+            checkoutModal.classList.remove('hidden');
+            checkoutModal.classList.add('flex');
+            setCartOpen(false);
+        }
+
+        function closeCheckout() {
+            checkoutModal.classList.add('hidden');
+            checkoutModal.classList.remove('flex');
+        }
+
+        checkoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openCheckout();
         });
 
-        checkoutBtn.addEventListener('click', () => {
-            if (cart.length === 0) return;
-            
+        closeCheckoutBtn.addEventListener('click', closeCheckout);
+        finishCheckoutBtn.addEventListener('click', closeCheckout);
+
+        backToCartBtn.addEventListener('click', () => {
+            closeCheckout();
+            setCartOpen(true);
+        });
+
+        checkoutModal.addEventListener('click', (e) => {
+            if (e.target === checkoutModal) {
+                closeCheckout();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !checkoutModal.classList.contains('hidden')) {
+                closeCheckout();
+            }
+        });
+
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            if (!checkoutForm.checkValidity()) {
+                checkoutForm.reportValidity();
+                return;
+            }
+
+            const formData = new FormData(checkoutForm);
+            const orderNumber = `SEC-${Date.now().toString().slice(-6)}`;
+            const name = formData.get('name');
+            const email = formData.get('email');
+
             cart = [];
             saveCart();
             updateCartUI();
-            toggleCart();
-            
-            popup.classList.remove('hidden');
+            checkoutForm.reset();
+            checkoutConfirmationText.textContent = `Order request ${orderNumber} was created for ${name}. SecuraLabs will follow up at ${email} with availability and next steps.`;
+            checkoutFormView.classList.add('hidden');
+            checkoutSuccessView.classList.remove('hidden');
         });
     }
 
@@ -273,7 +440,8 @@ document.addEventListener('DOMContentLoaded', () => {
             contactForm.classList.add('hidden');
             
             if (successMessage) {
-                successMessage.innerHTML = `<i class="fa-solid fa-circle-check text-3xl mb-3 text-securaPurple"></i><br/>Thank you for contacting SecuraLabs, ${name}. Our team in São Paulo will get back to you shortly regarding your inquiry.`;
+                successMessage.innerHTML = '<i class="fa-solid fa-circle-check text-3xl mb-3 text-securaPurple" aria-hidden="true"></i><br/><span></span>';
+                successMessage.querySelector('span').textContent = `Thank you for contacting SecuraLabs, ${name}. Our team in Sao Paulo will get back to you shortly regarding your inquiry.`;
                 successMessage.classList.remove('hidden');
             }
         });
@@ -301,6 +469,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (mobileNavSheet && !mobileNavSheet.classList.contains('hidden')) {
                     mobileNavSheet.classList.add('hidden');
+                    mobileNavSheet.setAttribute('aria-hidden', 'true');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    mobileMenuBtn.setAttribute('aria-label', 'Open menu');
                     const icon = mobileMenuBtn.querySelector('i');
                     icon.classList.remove('fa-xmark');
                     icon.classList.add('fa-bars');
@@ -322,9 +493,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isDark) {
                     icon.classList.remove('fa-moon');
                     icon.classList.add('fa-sun');
+                    btn.setAttribute('aria-label', 'Switch to light mode');
                 } else {
                     icon.classList.remove('fa-sun');
                     icon.classList.add('fa-moon');
+                    btn.setAttribute('aria-label', 'Switch to dark mode');
                 }
             }
         });

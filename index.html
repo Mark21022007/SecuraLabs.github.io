@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SecuraLabs | Safe · Simple · Reliable</title>
+    <title>SecuraLabs | Safe &middot; Simple &middot; Reliable</title>
     <link rel="icon" type="image/png" href="img/Secura Logoicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -69,88 +69,17 @@
 
 <body class="bg-white dark:bg-gray-900 antialiased overflow-x-hidden transition-colors duration-300">
 
-    <nav class="fixed w-full z-50 glass-nav dark:bg-gray-900/95 shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center cursor-pointer">
-                    <a href="index.html" class="flex items-center">
-                        <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-12 w-auto object-contain">
-                    </a>
-                </div>
+    
 
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-securaPurple font-medium transition">Home</a>
-                    <a href="about.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">About
-                        Us</a>
-                    <a href="shop.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Shop</a>
-                    <a href="faq.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">FAQ</a>
-                    <a href="contact.html"
-                        class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Contact</a>
+    <div id="site-header"></div>
+    <div id="cart-root"></div>
 
-                    <a href="#" class="dark-mode-toggle text-gray-600 dark:text-gray-300 hover:text-securaPurple transition relative">
-                        <i class="fa-solid fa-moon text-xl"></i>
-                    </a>
 
-                    <a href="#" id="cart-icon-btn" class="text-gray-600 dark:text-gray-300 hover:text-securaCoral transition relative">
-                        <i class="fa-solid fa-cart-shopping text-xl"></i>
-                        <span id="cart-counter"
-                            class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
-                    </a>
-                </div>
-
-                <div class="md:hidden flex items-center space-x-6">
-                    <a href="#" class="dark-mode-toggle text-gray-600 dark:text-gray-300 hover:text-securaPurple transition relative">
-                        <i class="fa-solid fa-moon text-xl"></i>
-                    </a>
-                    <a href="#" id="mobile-cart-icon-btn"
-                        class="text-gray-600 dark:text-gray-300 hover:text-securaCoral transition relative">
-                        <i class="fa-solid fa-cart-shopping text-xl"></i>
-                        <span id="mobile-cart-counter"
-                            class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
-                    </a>
-                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <div id="mobile-nav-sheet"
-        class="hidden fixed inset-0 z-40 bg-white dark:bg-gray-900 pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl transition-colors duration-300">
-        <a href="index.html" class="text-securaPurple border-b dark:border-gray-800 pb-4">Home</a>
-        <a href="about.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">About Us</a>
-        <a href="shop.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Shop</a>
-        <a href="faq.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">FAQ</a>
-        <a href="contact.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Contact</a>
-    </div>
-
-    <div id="cart-drawer"
-        class="hidden fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-900 shadow-2xl z-[60] flex flex-col border-l border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div class="p-6 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-securaLight dark:bg-gray-800">
-            <h2 class="text-xl font-bold text-securaDark dark:text-white">Your Cart</h2>
-            <button id="close-cart-btn" class="text-gray-400 hover:text-securaCoral text-2xl">&times;</button>
-        </div>
-        <div id="cart-items-container" class="p-6 flex-grow overflow-y-auto flex flex-col space-y-4">
-            <p class="text-gray-500 dark:text-gray-400 italic text-center mt-10">Your cart is currently empty.</p>
-        </div>
-        <div class="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
-            <div class="flex justify-between mb-4 font-bold text-lg dark:text-white">
-                <span>Subtotal</span>
-                <span id="cart-subtotal">$0.00</span>
-            </div>
-            <button id="checkout-btn"
-                class="w-full bg-securaPurple text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow">Secure
-                Checkout</button>
-        </div>
-    </div>
-    <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-[55]"></div>
 
     <section id="home" class="pt-32 pb-20 bg-securaLight dark:bg-gray-800/50 min-h-[calc(100vh-300px)] transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 pr-0 md:pr-12 text-center md:text-left">
-                <span class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-4 block">Safe · Simple
-                    · Reliable</span>
+                <span class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-4 block">Safe &middot; Simple &middot; Reliable</span>
                 <h1 class="text-5xl font-bold leading-tight mb-6 text-securaDark dark:text-white">Make Drink Safety Automatic.</h1>
                 <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
                     Invisible protection built into your everyday beverage. SecuraLabs shifts personal safety from
@@ -164,10 +93,90 @@
             <div class="md:w-1/2 mt-12 md:mt-0 relative">
                 <div
                     class="rounded-2xl shadow-2xl overflow-hidden bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 h-96 flex items-center justify-center">
-                    <img src="img/Kiliner Product.jpeg" alt="Clear Cup & Ki-Liner Visual"
+                    <img src="img/generated/kiliner-package-cup-v3.webp" alt="SecuraLabs Ki-Liner package beside a clear cup" width="1402" height="1122"
                         class="w-full h-full object-cover">
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-5 bg-securaLight dark:bg-gray-800">
+                    <i class="fa-solid fa-layer-group text-securaPurple text-2xl mb-3" aria-hidden="true"></i>
+                    <h2 class="text-base font-bold text-securaDark dark:text-white">Single-use hygienic</h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Disposable liner format for events, universities, airlines, and high-volume venues.</p>
+                </div>
+                <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-5 bg-securaLight dark:bg-gray-800">
+                    <i class="fa-solid fa-hand-sparkles text-securaCoral text-2xl mb-3" aria-hidden="true"></i>
+                    <h2 class="text-base font-bold text-securaDark dark:text-white">No user action</h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Designed to work passively once placed inside drinkware.</p>
+                </div>
+                <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-5 bg-securaLight dark:bg-gray-800">
+                    <i class="fa-solid fa-temperature-half text-securaPurple text-2xl mb-3" aria-hidden="true"></i>
+                    <h2 class="text-base font-bold text-securaDark dark:text-white">Cold and thermal variants</h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Standard and Thermal versions support different beverage environments.</p>
+                </div>
+                <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-5 bg-securaLight dark:bg-gray-800">
+                    <i class="fa-solid fa-building-shield text-securaCoral text-2xl mb-3" aria-hidden="true"></i>
+                    <h2 class="text-base font-bold text-securaDark dark:text-white">Bulk venue orders</h2>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Built for B2B rollout across bars, campuses, events, and hospitality partners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-securaLight dark:bg-gray-800/40 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-14">
+                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">How Ki-Liner Works</p>
+                <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-4">A passive layer from cup setup to intervention.</h2>
+                <p class="text-gray-600 dark:text-gray-300">The business plan describes nanosensor-based monitoring paired with a phase-responsive material that can form a gel-like barrier when concerning chemical patterns cross a safety threshold.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <div class="w-14 h-14 rounded-full bg-purple-100 dark:bg-gray-800 text-securaPurple flex items-center justify-center text-2xl mb-5">
+                        <i class="fa-solid fa-circle-dot" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-securaDark dark:text-white mb-3">1. Place liner</h3>
+                    <p class="text-gray-600 dark:text-gray-400">A single-use Ki-Liner is placed inside compatible drinkware before service.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <div class="w-14 h-14 rounded-full bg-orange-100 dark:bg-gray-800 text-securaCoral flex items-center justify-center text-2xl mb-5">
+                        <i class="fa-solid fa-glass-water-droplet" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-securaDark dark:text-white mb-3">2. Pour drink</h3>
+                    <p class="text-gray-600 dark:text-gray-400">Embedded sensors monitor for chemical changes or patterns associated with tampering.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <div class="w-14 h-14 rounded-full bg-red-100 dark:bg-gray-800 text-red-500 flex items-center justify-center text-2xl mb-5">
+                        <i class="fa-solid fa-ban" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-securaDark dark:text-white mb-3">3. Interrupt consumption</h3>
+                    <p class="text-gray-600 dark:text-gray-400">If a concerning threshold is crossed, the responsive material is intended to form a gel-like barrier.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[1fr_24rem] gap-12 items-start">
+            <div>
+                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">Validation Focus</p>
+                <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-5">Built around measurable drink-safety challenges.</h2>
+                <div class="space-y-5 text-gray-600 dark:text-gray-300 leading-relaxed">
+                    <p><strong class="text-securaDark dark:text-white">Testing focus:</strong> SecuraLabs focuses on reducing false positives in complex beverage compositions, improving reaction time, and supporting practical drinkware formats.</p>
+                    <p><strong class="text-securaDark dark:text-white">Detection scope:</strong> Ki-Liner is designed around chemical signatures associated with common drink-adulteration concerns, including GHB, ketamine analogs, and benzodiazepines.</p>
+                    <p><strong class="text-securaDark dark:text-white">Responsible use:</strong> Ki-Liner is an added safety layer for social environments. Public validation, certification, and detection coverage should be reviewed as part of any venue rollout.</p>
+                </div>
+            </div>
+            <aside class="bg-securaDark dark:bg-gray-800 text-white rounded-xl p-8">
+                <h3 class="text-2xl font-bold mb-4">Partner with SecuraLabs</h3>
+                <p class="text-gray-300 mb-6">Bars, campuses, event teams, and hospitality groups can work with SecuraLabs on implementation planning and venue-scale deployment.</p>
+                <a href="contact.html" class="inline-block bg-white text-securaDark font-bold py-3 px-6 rounded-full hover:bg-gray-100 transition">Start Partnership</a>
+            </aside>
         </div>
     </section>
 
@@ -198,7 +207,7 @@
                 <div class="p-8 rounded-2xl bg-securaLight dark:bg-gray-800 shadow-sm hover:shadow-md transition">
                     <div
                         class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow text-red-500 text-2xl">
-                        <i class="fa-solid fa-shield-halved"></i></div>
+                        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
                     <h3 class="text-xl font-semibold dark:text-white mb-3">Gel-Lock Activated</h3>
                     <p class="text-gray-600 dark:text-gray-400 text-sm">A localized chemical reaction alters the liner's structure,
                         creating a gel-lock that physically interrupts consumption.</p>
@@ -207,28 +216,20 @@
         </div>
     </section>
 
-    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0">
-                <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-14 w-auto object-contain mb-2">
+    <section class="py-16 bg-securaLight dark:bg-gray-800/40 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="max-w-2xl text-center md:text-left">
+                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">Product Roadmap</p>
+                <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-3">SecuraLabs is building beyond one liner.</h2>
+                <p class="text-gray-600 dark:text-gray-300">Explore future directions including Ki-Liner 2000, Ki Smart Surfaces, integrated drinkware, and safety packaging.</p>
             </div>
-            <div class="flex space-x-6 text-gray-400">
-                <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
-                <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-twitter text-xl"></i></a>
-                <a href="#" class="hover:text-securaPurple transition"><i
-                        class="fa-brands fa-instagram text-xl"></i></a>
-            </div>
+            <a href="about.html#expansion-roadmap" class="inline-block bg-securaPurple text-white font-semibold py-3 px-7 rounded-full shadow hover:bg-purple-700 transition">View Roadmap</a>
         </div>
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
-            <p>&copy; 2026 SecuraLabs. All rights reserved.</p>
-            <div class="space-x-4 mt-4 md:mt-0">
-                <a href="#" class="hover:text-gray-900 dark:hover:text-white">Privacy Policy</a>
-                <a href="#" class="hover:text-gray-900 dark:hover:text-white">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+    </section>
 
+    <div id="site-footer"></div>
+
+    <script src="layout.js"></script>
     <script src="main.js"></script>
 </body>
 

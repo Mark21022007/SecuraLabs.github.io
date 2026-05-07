@@ -69,145 +69,156 @@
 
 <body class="bg-white dark:bg-gray-900 antialiased overflow-x-hidden transition-colors duration-300">
 
-    <nav class="fixed w-full z-50 glass-nav dark:bg-gray-900/95 shadow-sm border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center cursor-pointer">
-                    <a href="index.html" class="flex items-center">
-                        <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-12 w-auto object-contain">
-                    </a>
-                </div>
+    
 
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="index.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Home</a>
-                    <a href="about.html" class="text-securaPurple font-medium transition">About Us</a>
-                    <a href="shop.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Shop</a>
-                    <a href="faq.html" class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">FAQ</a>
-                    <a href="contact.html"
-                        class="text-gray-600 dark:text-gray-300 hover:text-securaPurple dark:hover:text-securaPurple font-medium transition">Contact</a>
+    <div id="site-header"></div>
+    <div id="cart-root"></div>
 
-                    <a href="#" class="dark-mode-toggle text-gray-600 dark:text-gray-300 hover:text-securaPurple transition relative">
-                        <i class="fa-solid fa-moon text-xl"></i>
-                    </a>
 
-                    <a href="#" id="cart-icon-btn" class="text-gray-600 dark:text-gray-300 hover:text-securaCoral transition relative">
-                        <i class="fa-solid fa-cart-shopping text-xl"></i>
-                        <span id="cart-counter"
-                            class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
-                    </a>
-                </div>
 
-                <div class="md:hidden flex items-center space-x-6">
-                    <a href="#" class="dark-mode-toggle text-gray-600 dark:text-gray-300 hover:text-securaPurple transition relative">
-                        <i class="fa-solid fa-moon text-xl"></i>
-                    </a>
-                    <a href="#" id="mobile-cart-icon-btn"
-                        class="text-gray-600 dark:text-gray-300 hover:text-securaCoral transition relative">
-                        <i class="fa-solid fa-cart-shopping text-xl"></i>
-                        <span id="mobile-cart-counter"
-                            class="hidden absolute -top-2 -right-3 bg-securaCoral text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
-                    </a>
-                    <button id="mobile-menu-btn" class="text-gray-600 dark:text-gray-300 focus:outline-none">
-                        <i class="fa-solid fa-bars text-2xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <div id="mobile-nav-sheet"
-        class="hidden fixed inset-0 z-40 bg-white dark:bg-gray-900 pt-24 px-6 flex flex-col space-y-6 text-lg font-medium shadow-2xl transition-colors duration-300">
-        <a href="index.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Home</a>
-        <a href="about.html" class="text-securaPurple border-b dark:border-gray-800 pb-4">About Us</a>
-        <a href="shop.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Shop</a>
-        <a href="faq.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">FAQ</a>
-        <a href="contact.html" class="text-gray-800 dark:text-gray-200 hover:text-securaPurple border-b dark:border-gray-800 pb-4">Contact</a>
-    </div>
-
-    <div id="cart-drawer"
-        class="hidden fixed top-0 right-0 h-full w-80 bg-white dark:bg-gray-900 shadow-2xl z-[60] flex flex-col border-l border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div class="p-6 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center bg-securaLight dark:bg-gray-800">
-            <h2 class="text-xl font-bold text-securaDark dark:text-white">Your Cart</h2>
-            <button id="close-cart-btn" class="text-gray-400 hover:text-securaCoral text-2xl">&times;</button>
-        </div>
-        <div id="cart-items-container" class="p-6 flex-grow overflow-y-auto flex flex-col space-y-4">
-            <p class="text-gray-500 dark:text-gray-400 italic text-center mt-10">Your cart is currently empty.</p>
-        </div>
-        <div class="p-6 border-t border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50">
-            <div class="flex justify-between mb-4 font-bold text-lg dark:text-white">
-                <span>Subtotal</span>
-                <span id="cart-subtotal">$0.00</span>
-            </div>
-            <button id="checkout-btn"
-                class="w-full bg-securaPurple text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow">Secure
-                Checkout</button>
-        </div>
-    </div>
-    <div id="cart-overlay" class="hidden fixed inset-0 bg-black bg-opacity-30 z-[55]"></div>
-
-    <section id="about" class="pt-32 pb-20 bg-gray-50 dark:bg-gray-800/30 min-h-[calc(100vh-200px)] flex flex-col justify-center transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2 text-center md:text-left">
-                <h2 class="text-4xl font-bold text-securaDark dark:text-white mb-6">Who are we?</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
-                    At Secura Labs, we are driven by one simple idea: social environments should feel as safe as they are enjoyable. Founded by a group of forward-thinking students with a passion for innovation and real-world impact, our mission is to create solutions that add an extra layer of confidence without disrupting everyday experiences. Our flagship product, Ki-Liner, was developed to address a growing concern in nightlife and social settings by offering a discreet, seamless way to help reduce the risk of drink tampering. We focus on combining modern design, practical functionality, and responsible innovation to create products that work in the background while people stay present in the moment. At Secura Labs, we are not just building products—we are shaping a safer standard for social spaces worldwide.
+    <section id="about" class="pt-32 pb-20 bg-gray-50 dark:bg-gray-800/30 min-h-[calc(100vh-200px)] transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-4">Founded in S&atilde;o Paulo</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-securaDark dark:text-white mb-6">Building drinkware protection for safer social spaces.</h1>
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                    SecuraLabs is a safety technology company founded in 2023 by Ari, Marcus, and Jabari after their time at LifePrep Academy. The company began after conversations around real drink-adulteration incidents made one gap clear: most existing tools depend on people noticing danger in the exact environments where awareness is hardest to maintain.
+                </p>
+                <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                    Ki-Liner grew from that insight. Instead of asking people to test a drink after concern appears, SecuraLabs is developing embedded drinkware protection that works quietly inside everyday hospitality settings.
                 </p>
             </div>
-            <div class="md:w-1/2">
+            <div>
                 <div class="rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800">
-                    <img src="img/about%20us%20img.png" alt="About Secura Labs" class="w-full h-auto object-cover">
+                    <img src="img/about-us.webp" alt="SecuraLabs team and product development" width="1200" height="800" loading="lazy" class="w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <i class="fa-solid fa-location-dot text-securaPurple text-2xl mb-4" aria-hidden="true"></i>
+                    <h2 class="text-xl font-bold text-securaDark dark:text-white mb-2">Origin</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Founded in S&atilde;o Paulo, Brazil, with a global hospitality problem in mind.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <i class="fa-solid fa-flask text-securaCoral text-2xl mb-4" aria-hidden="true"></i>
+                    <h2 class="text-xl font-bold text-securaDark dark:text-white mb-2">Technology</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Nanosensor-based detection paired with a responsive material barrier concept.</p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <i class="fa-solid fa-building-shield text-securaPurple text-2xl mb-4" aria-hidden="true"></i>
+                    <h2 class="text-xl font-bold text-securaDark dark:text-white mb-2">Model</h2>
+                    <p class="text-gray-600 dark:text-gray-400">A B2B rollout strategy for bars, universities, restaurants, and large-scale event venues.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 grid grid-cols-1 lg:grid-cols-2 gap-10">
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">Our Mission</p>
+                <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-5">Shift safety from reactive to built-in.</h2>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-5">
+                    SecuraLabs is focused on moving drink safety beyond after-the-fact testing. The goal is to embed safety directly into drinkware systems so protection can become part of the normal service flow.
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    The company designs for environments where speed, volume, and trust matter: nightlife, campuses, airlines, festivals, and hospitality operations using standard cup formats.
+                </p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+                <p class="text-securaCoral font-semibold tracking-wider uppercase text-sm mb-3">Leadership Blend</p>
+                <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-5">Business, biotechnology, and operations.</h2>
+                <div class="space-y-4 text-gray-600 dark:text-gray-300">
+                    <p><strong class="text-securaDark dark:text-white">Ari, CEO:</strong> leads company direction, partnerships, and commercial growth.</p>
+                    <p><strong class="text-securaDark dark:text-white">Marcus, CTO:</strong> brings biotechnology and nanosensor research into product development.</p>
+                    <p><strong class="text-securaDark dark:text-white">Jabari, COO:</strong> focuses on operations, deployment, and scalable venue integration.</p>
                 </div>
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center">
-                <h2 class="text-4xl font-bold text-securaDark dark:text-white mb-6">Engineering Peace of Mind.</h2>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                    Our mission is to shift the burden of safety. For too long, individuals have relied on reactive
-                    detection methods like test strips. We are transitioning the industry to passive intervention.
+            <div class="bg-securaDark dark:bg-gray-800 rounded-2xl p-8 md:p-10 text-white shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-8 items-start">
+                    <div>
+                        <p class="text-securaCoral font-semibold tracking-wider uppercase text-sm mb-3">Where We Are Going</p>
+                        <h2 class="text-3xl font-bold mb-4">From one liner to safer service systems.</h2>
+                        <p class="text-gray-300 leading-relaxed">SecuraLabs plans to expand Ki-Liner across product formats, beverage conditions, and hospitality partnerships while continuing research and development around performance, usability, and scalable manufacturing.</p>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-white/10 rounded-xl p-5">
+                            <h3 class="font-bold mb-2">Product variants</h3>
+                            <p class="text-gray-300 text-sm">Standard and Thermal versions for cold and elevated-temperature beverages.</p>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-5">
+                            <h3 class="font-bold mb-2">Venue deployment</h3>
+                            <p class="text-gray-300 text-sm">Built for high-volume service environments and institutional ordering.</p>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-5">
+                            <h3 class="font-bold mb-2">Partnership growth</h3>
+                            <p class="text-gray-300 text-sm">Manufacturer, distributor, and hospitality relationships support market expansion.</p>
+                        </div>
+                        <div class="bg-white/10 rounded-xl p-5">
+                            <h3 class="font-bold mb-2">Responsible rollout</h3>
+                            <p class="text-gray-300 text-sm">Validation, documentation, and implementation planning remain part of commercial adoption.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="expansion-roadmap" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+            <div class="max-w-3xl mb-10">
+                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">Expansion Roadmap</p>
+                <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-4">Future product directions beyond the first Ki-Liner.</h2>
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    SecuraLabs is building around a broader platform idea: safety-focused materials that can integrate into drinkware, hospitality surfaces, and packaging systems. These concepts are positioned as future development directions, not current checkout products.
                 </p>
-                <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm text-left relative overflow-hidden">
-                    <div class="absolute right-0 top-0 opacity-5 text-9xl text-securaPurple"><i
-                            class="fa-solid fa-flask"></i></div>
-                    <h3 class="text-2xl font-semibold text-securaPurple mb-6 relative z-10">The Technology</h3>
-                    <ul class="space-y-4 text-gray-600 dark:text-gray-300 relative z-10 font-medium">
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> 100%
-                            Food-grade materials.</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i>
-                            Non-ingestive micro-encapsulation.</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> No
-                            electronics or batteries required.</li>
-                        <li class="flex items-center"><i class="fa-solid fa-check text-securaCoral mr-4"></i> Zero user
-                            activation needed.</li>
-                    </ul>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-gray-700 text-securaPurple flex items-center justify-center text-xl mb-5">
+                        <i class="fa-solid fa-circle-nodes" aria-hidden="true"></i>
+                    </div>
+                    <p class="text-xs font-bold tracking-widest uppercase text-securaCoral mb-2">Next-gen liner</p>
+                    <h3 class="text-xl font-bold text-securaDark dark:text-white mb-3">Ki-Liner 2000</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">A future liner concept focused on faster response, broader beverage compatibility, and easier venue integration.</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-gray-700 text-securaCoral flex items-center justify-center text-xl mb-5">
+                        <i class="fa-solid fa-table-cells-large" aria-hidden="true"></i>
+                    </div>
+                    <p class="text-xs font-bold tracking-widest uppercase text-securaCoral mb-2">Material platform</p>
+                    <h3 class="text-xl font-bold text-securaDark dark:text-white mb-3">Ki Smart Surfaces</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Smart surface applications for counters, trays, packaging, and service environments where contamination awareness matters.</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-gray-700 text-securaPurple flex items-center justify-center text-xl mb-5">
+                        <i class="fa-solid fa-wine-glass" aria-hidden="true"></i>
+                    </div>
+                    <p class="text-xs font-bold tracking-widest uppercase text-securaCoral mb-2">Venue systems</p>
+                    <h3 class="text-xl font-bold text-securaDark dark:text-white mb-3">Integrated Drinkware</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Reusable cups and glassware concepts for hospitality groups that want embedded safety as part of service operations.</p>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                    <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-gray-700 text-securaCoral flex items-center justify-center text-xl mb-5">
+                        <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
+                    </div>
+                    <p class="text-xs font-bold tracking-widest uppercase text-securaCoral mb-2">Institutional rollout</p>
+                    <h3 class="text-xl font-bold text-securaDark dark:text-white mb-3">Safety Packaging</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Packaging formats for campuses, airlines, festivals, and food-service operations with high-volume safety requirements.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 py-12 transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-6 md:mb-0">
-                <img src="img/Secura fulllogo.png" alt="SecuraLabs Logo" class="h-14 w-auto object-contain mb-2">
-            </div>
-            <div class="flex space-x-6 text-gray-400">
-                <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
-                <a href="#" class="hover:text-securaPurple transition"><i class="fa-brands fa-twitter text-xl"></i></a>
-                <a href="#" class="hover:text-securaPurple transition"><i
-                        class="fa-brands fa-instagram text-xl"></i></a>
-            </div>
-        </div>
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 border-t border-gray-100 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 dark:text-gray-400">
-            <p>&copy; 2026 SecuraLabs. All rights reserved.</p>
-            <div class="space-x-4 mt-4 md:mt-0">
-                <a href="#" class="hover:text-gray-900 dark:hover:text-white">Privacy Policy</a>
-                <a href="#" class="hover:text-gray-900 dark:hover:text-white">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+    <div id="site-footer"></div>
 
+    <script src="layout.js"></script>
     <script src="main.js"></script>
 </body>
 
