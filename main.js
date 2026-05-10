@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let targetFrame = 0;
         let currentFrameIndex = 0;
-        const ease = 0.15; // Slightly faster catch-up
+        const ease = 0.06; // Lower number means smoother, "floatier" interpolation
 
         const renderCanvasFrame = () => {
             if (imagesLoaded > 10) { // Start rendering if we have some frames
