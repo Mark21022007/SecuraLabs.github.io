@@ -14,6 +14,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ======================================================================
+       0. Scroll-Bound Canvas Image Sequence (Apple Style)
+       ====================================================================== */
+    const scrollCanvas = document.getElementById('scroll-canvas');
+    const scrollVideoSection = document.getElementById('scroll-video-section');
+
+    if (scrollCanvas && scrollVideoSection && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const ctx = scrollCanvas.getContext('2d');
+        const frameCount = 426; 
+        const images = [];
+        let imagesLoaded = 0;
+        
+        // Set fixed dimensions based on your video aspect ratio
+        scrollCanvas.width = 1920; 
+        scrollCanvas.height = 1080;
+
+        const currentFrame = index => `img/sequence/frame_${index.toString().padStart(4, '0')}.jpg`;
+        
+        for (let i = 0; i < frameCount; i++) {
+            const img = new Image();
+            img.src = currentFrame(i);
+            img.onload = () => {
+                imagesLoaded++;
+                if (i === 0) {
+                    ctx.drawImage(img, 0, 0, scrollCanvas.width, scrollCanvas.height);
+                }
+            };
+            images.push(img);
+        }
+
+        let targetFrame = 0;
+        let currentFrameIndex = 0;
+        const ease = 0.15; // Slightly faster catch-up
+
+        const renderCanvasFrame = () => {
+            if (imagesLoaded > 10) { // Start rendering if we have some frames
+                const rect = scrollVideoSection.getBoundingClientRect();
+                const scrollRange = rect.height - window.innerHeight;
+                
+                let progress = -rect.top / scrollRange;
+                progress = Math.max(0, Math.min(1, progress));
+                
+                targetFrame = progress * (frameCount - 1);
+                currentFrameIndex += (targetFrame - currentFrameIndex) * ease;
+                
+                const frameToDraw = Math.round(currentFrameIndex);
+                if (images[frameToDraw] && images[frameToDraw].complete && images[frameToDraw].naturalWidth > 0) {
+                    ctx.drawImage(images[frameToDraw], 0, 0, scrollCanvas.width, scrollCanvas.height);
+                }
+            }
+            requestAnimationFrame(renderCanvasFrame);
+        };
+        
+        requestAnimationFrame(renderCanvasFrame);
+    }
+
+    /* ======================================================================
        1. Mobile Menu Toggle
        ====================================================================== */
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
