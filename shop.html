@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 
     <script>
         tailwind.config = {
@@ -60,10 +61,6 @@
             color: #1f2937;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
     </style>
 </head>
 
@@ -76,26 +73,30 @@
 
 
 
-    <section id="shop" class="pt-32 pb-20 bg-white dark:bg-gray-900 min-h-[calc(100vh-200px)] transition-colors duration-300">
+    <section id="shop" class="pt-32 pb-20 min-h-[calc(100vh-200px)] transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-securaDark dark:text-white">Shop Ki-Liner</h2>
-                <p class="mt-4 text-gray-600 dark:text-gray-300">Choose the perfect protection for your lifestyle.</p>
+                <p class="eyebrow mb-3 justify-center">Shop</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-securaDark dark:text-white">Ki-Liner Packs</h1>
+                <p class="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Choose small packs for personal use or larger packs for events, bars, campuses, and hospitality teams.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
                 <div
-                    class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 flex flex-col">
-                    <div class="h-48 bg-securaLight dark:bg-gray-700 rounded-xl mb-6 overflow-hidden">
+                    class="premium-card product-card rounded-3xl p-6 flex flex-col">
+                    <div class="h-56 bg-securaLight dark:bg-gray-700 rounded-2xl mb-6 overflow-hidden">
                         <img src="img/generated/secura-packaging-system.webp" alt="Ki-Liner packaging system with clear liner and cup" width="1536" height="1024" loading="lazy" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="text-2xl font-bold text-securaDark dark:text-white mb-2">Ki-Liner Standard&trade;</h3>
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                        <h2 class="text-2xl font-bold text-securaDark dark:text-white">Ki-Liner Standard&trade;</h2>
+                        <span class="rounded-full bg-purple-100 dark:bg-purple-500/15 text-securaPurple dark:text-purple-200 text-xs font-bold px-3 py-1">Cold</span>
+                    </div>
                     <p class="text-gray-500 dark:text-gray-400 mb-6 text-sm">Optimized for cold beverages and standard cup sizes.</p>
 
                     <div class="mb-5">
                         <label for="size-standard" class="block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2">Cup Size:</label>
                         <select id="size-standard"
-                            class="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-700 dark:text-white appearance-none cursor-pointer">
+                            class="form-control w-full px-4 py-3 border border-gray-200 dark:border-gray-600 focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-700 dark:text-white appearance-none cursor-pointer">
                             <option value="8-12oz">8 - 12 oz</option>
                             <option value="14-18oz">14 - 18 oz</option>
                             <option value="20-24oz">20 - 24 oz</option>
@@ -106,21 +107,21 @@
                         <p class="block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2">Select Pack:</p>
                         <button data-product="Ki-Liner Standard (10-Pack)" data-price="6.99"
                             data-size-target="size-standard"
-                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaPurple hover:bg-purple-50 dark:hover:bg-gray-700 transition group">
+                            class="add-to-cart-btn w-full min-h-12 flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaPurple hover:bg-purple-50 dark:hover:bg-gray-700 transition group cursor-pointer">
                             <span class="font-medium text-gray-700 dark:text-gray-200">10-Pack</span>
                             <span class="text-securaPurple font-bold">$6.99 <i
                                     class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition" aria-hidden="true"></i></span>
                         </button>
                         <button data-product="Ki-Liner Standard (25-Pack)" data-price="13.99"
                             data-size-target="size-standard"
-                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaPurple hover:bg-purple-50 dark:hover:bg-gray-700 transition group">
+                            class="add-to-cart-btn w-full min-h-12 flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaPurple hover:bg-purple-50 dark:hover:bg-gray-700 transition group cursor-pointer">
                             <span class="font-medium text-gray-700 dark:text-gray-200">25-Pack</span>
                             <span class="text-securaPurple font-bold">$13.99 <i
                                     class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition" aria-hidden="true"></i></span>
                         </button>
                         <button data-product="Ki-Liner Standard (50-Pack)" data-price="24.99"
                             data-size-target="size-standard"
-                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaPurple hover:bg-purple-50 dark:hover:bg-gray-700 transition group">
+                            class="add-to-cart-btn w-full min-h-12 flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaPurple hover:bg-purple-50 dark:hover:bg-gray-700 transition group cursor-pointer">
                             <span class="font-medium text-gray-700 dark:text-gray-200">50-Pack</span>
                             <span class="text-securaPurple font-bold">$24.99 <i
                                     class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition" aria-hidden="true"></i></span>
@@ -129,17 +130,20 @@
                 </div>
 
                 <div
-                    class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition duration-300 flex flex-col">
-                    <div class="h-48 bg-orange-50 dark:bg-gray-700 rounded-xl mb-6 overflow-hidden">
+                    class="premium-card product-card rounded-3xl p-6 flex flex-col">
+                    <div class="h-56 bg-orange-50 dark:bg-gray-700 rounded-2xl mb-6 overflow-hidden">
                         <img src="img/generated/secura-venue-ready-cups.webp" alt="Ki-Liner cups prepared for venue drink service" width="1536" height="1024" loading="lazy" class="w-full h-full object-cover">
                     </div>
-                    <h3 class="text-2xl font-bold text-securaDark dark:text-white mb-2">Ki-Liner Thermal&trade;</h3>
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                        <h2 class="text-2xl font-bold text-securaDark dark:text-white">Ki-Liner Thermal&trade;</h2>
+                        <span class="rounded-full bg-orange-100 dark:bg-orange-500/15 text-securaCoral dark:text-orange-200 text-xs font-bold px-3 py-1">Thermal</span>
+                    </div>
                     <p class="text-gray-500 dark:text-gray-400 mb-6 text-sm">Heat-resistant smart liners designed for hot beverages.</p>
 
                     <div class="mb-5">
                         <label for="size-thermal" class="block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2">Cup Size:</label>
                         <select id="size-thermal"
-                            class="w-full px-4 py-3 border border-gray-200 dark:border-gray-600 rounded-xl focus:outline-none focus:border-securaCoral focus:ring-1 focus:ring-securaCoral bg-white dark:bg-gray-700 dark:text-white appearance-none cursor-pointer">
+                            class="form-control w-full px-4 py-3 border border-gray-200 dark:border-gray-600 focus:outline-none focus:border-securaCoral focus:ring-1 focus:ring-securaCoral bg-white dark:bg-gray-700 dark:text-white appearance-none cursor-pointer">
                             <option value="8-12oz">8 - 12 oz</option>
                             <option value="14-18oz">14 - 18 oz</option>
                             <option value="20-24oz">20 - 24 oz</option>
@@ -150,21 +154,21 @@
                         <p class="block text-gray-700 dark:text-gray-300 text-sm font-semibold mb-2">Select Pack:</p>
                         <button data-product="Ki-Liner Thermal (10-Pack)" data-price="7.99"
                             data-size-target="size-thermal"
-                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaCoral hover:bg-orange-50 dark:hover:bg-gray-700 transition group">
+                            class="add-to-cart-btn w-full min-h-12 flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaCoral hover:bg-orange-50 dark:hover:bg-gray-700 transition group cursor-pointer">
                             <span class="font-medium text-gray-700 dark:text-gray-200">10-Pack</span>
                             <span class="text-securaCoral font-bold">$7.99 <i
                                     class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition" aria-hidden="true"></i></span>
                         </button>
                         <button data-product="Ki-Liner Thermal (25-Pack)" data-price="15.99"
                             data-size-target="size-thermal"
-                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaCoral hover:bg-orange-50 dark:hover:bg-gray-700 transition group">
+                            class="add-to-cart-btn w-full min-h-12 flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaCoral hover:bg-orange-50 dark:hover:bg-gray-700 transition group cursor-pointer">
                             <span class="font-medium text-gray-700 dark:text-gray-200">25-Pack</span>
                             <span class="text-securaCoral font-bold">$15.99 <i
                                     class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition" aria-hidden="true"></i></span>
                         </button>
                         <button data-product="Ki-Liner Thermal (50-Pack)" data-price="27.99"
                             data-size-target="size-thermal"
-                            class="add-to-cart-btn w-full flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaCoral hover:bg-orange-50 dark:hover:bg-gray-700 transition group">
+                            class="add-to-cart-btn w-full min-h-12 flex justify-between items-center p-4 border dark:border-gray-600 rounded-xl hover:border-securaCoral hover:bg-orange-50 dark:hover:bg-gray-700 transition group cursor-pointer">
                             <span class="font-medium text-gray-700 dark:text-gray-200">50-Pack</span>
                             <span class="text-securaCoral font-bold">$27.99 <i
                                     class="fa-solid fa-plus ml-2 opacity-0 group-hover:opacity-100 transition" aria-hidden="true"></i></span>
@@ -174,40 +178,40 @@
             </div>
 
             <div
-                class="mt-16 bg-securaDark dark:bg-gray-800 rounded-2xl p-8 md:p-12 text-center text-white shadow-xl relative overflow-hidden">
+                class="mt-16 bg-securaDark dark:bg-gray-800 rounded-3xl p-8 md:p-12 text-center text-white shadow-xl relative overflow-hidden">
                 <div class="relative z-10">
                     <h3 class="text-3xl font-bold mb-4">Venue, Bar, or University?</h3>
                     <p class="text-gray-300 dark:text-gray-400 mb-8 max-w-2xl mx-auto">Protect your patrons at scale. We offer bulk
                         institutional partnerships and wholesale pricing for high-volume environments.</p>
                     <a href="contact.html"
-                        class="inline-block bg-white text-securaDark font-bold py-3 px-8 rounded-full shadow hover:bg-gray-100 transition">Request
+                        class="btn-secondary bg-white text-securaDark">Request
                         Wholesale Pricing</a>
                 </div>
             </div>
 
             <div class="mt-12 grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="bg-securaLight dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl overflow-hidden">
+                <div class="premium-card rounded-2xl overflow-hidden">
                     <img src="img/generated/secura-venue-demo.webp" alt="SecuraLabs Ki-Liner setup on a bar counter" width="1536" height="1024" loading="lazy" class="h-40 w-full object-cover">
                     <div class="p-5">
                         <h3 class="font-bold text-securaDark dark:text-white mb-2">Venue-ready setup</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400">Ki-Liner presented for bars, events, and hospitality service teams.</p>
                     </div>
                 </div>
-                <div class="bg-securaLight dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl overflow-hidden">
+                <div class="premium-card rounded-2xl overflow-hidden">
                     <img src="img/generated/secura-packaging-system.webp" alt="Ki-Liner box and product packaging formats" width="1536" height="1024" loading="lazy" class="h-40 w-full object-cover">
                     <div class="p-5">
                         <h3 class="font-bold text-securaDark dark:text-white mb-2">Packaging shot</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400">Pack sizes organized for small orders, events, and high-volume rollout.</p>
                     </div>
                 </div>
-                <div class="bg-securaLight dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl overflow-hidden">
+                <div class="premium-card rounded-2xl overflow-hidden">
                     <img src="img/generated/secura-liner-closeup.webp" alt="Close-up of the clear Ki-Liner disk" width="1315" height="1196" loading="lazy" class="h-40 w-full object-cover">
                     <div class="p-5">
                         <h3 class="font-bold text-securaDark dark:text-white mb-2">Liner close-up</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400">Transparent geometry designed to sit discreetly inside compatible drinkware.</p>
                     </div>
                 </div>
-                <div class="bg-securaLight dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl overflow-hidden">
+                <div class="premium-card rounded-2xl overflow-hidden">
                     <img src="img/generated/secura-venue-ready-cups.webp" alt="Multiple Ki-Liner cups prepared at a venue table" width="1536" height="1024" loading="lazy" class="h-40 w-full object-cover">
                     <div class="p-5">
                         <h3 class="font-bold text-securaDark dark:text-white mb-2">Service table</h3>

@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 
     <script>
         tailwind.config = {
@@ -60,10 +61,6 @@
             color: #1f2937;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
     </style>
 </head>
 
@@ -76,49 +73,71 @@
 
 
 
-    <section id="home" class="pt-32 pb-20 bg-securaLight dark:bg-gray-800/50 min-h-[calc(100vh-300px)] transition-colors duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 pr-0 md:pr-12 text-center md:text-left">
-                <span class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-4 block">Safe &middot; Simple &middot; Reliable</span>
-                <h1 class="text-5xl font-bold leading-tight mb-6 text-securaDark dark:text-white">Make Drink Safety Automatic.</h1>
-                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                    Invisible protection built into your everyday beverage. SecuraLabs shifts personal safety from
-                    reactive to proactive with the Ki-Liner.
+    <section id="home" class="pt-32 pb-20 transition-colors duration-300">
+        <div class="hero-shell max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14 rounded-[2rem] border border-white/70 dark:border-white/10 shadow-2xl">
+            <div class="grid grid-cols-1 lg:grid-cols-[0.88fr_1.12fr] gap-10 lg:gap-14 items-center">
+            <div class="text-center lg:text-left">
+                <span class="eyebrow mb-4">Safe &middot; Simple &middot; Reliable</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-securaDark dark:text-white">Drink protection built into the cup.</h1>
+                <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    Ki-Liner is a passive, single-use safety layer for venues, campuses, events, and hospitality teams that need drink protection to fit normal service flow.
                 </p>
-                <a href="shop.html"
-                    class="inline-block bg-securaPurple text-white font-semibold py-4 px-8 rounded-full shadow-lg hover:bg-purple-700 hover:shadow-xl transition transform hover:-translate-y-1">
-                    Shop Ki-Liner
-                </a>
-            </div>
-            <div class="md:w-1/2 mt-12 md:mt-0 relative">
-                <div
-                    class="rounded-2xl shadow-2xl overflow-hidden bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 h-96 flex items-center justify-center">
-                    <img src="img/generated/kiliner-package-cup-v3.webp" alt="SecuraLabs Ki-Liner package beside a clear cup" width="1402" height="1122"
-                        class="w-full h-full object-cover">
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                    <a href="shop.html" class="btn-primary">
+                        Shop Ki-Liner <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+                    <a href="contact.html" class="btn-secondary">
+                        Partner with us
+                    </a>
                 </div>
+                <div class="mt-8 grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0">
+                    <div class="metric-pill rounded-2xl p-4">
+                        <p class="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400">Format</p>
+                        <p class="text-sm font-bold text-securaDark dark:text-white mt-1">Single-use</p>
+                    </div>
+                    <div class="metric-pill rounded-2xl p-4">
+                        <p class="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400">Power</p>
+                        <p class="text-sm font-bold text-securaDark dark:text-white mt-1">No app</p>
+                    </div>
+                    <div class="metric-pill rounded-2xl p-4">
+                        <p class="text-xs font-bold uppercase tracking-wide text-gray-500 dark:text-gray-400">Use</p>
+                        <p class="text-sm font-bold text-securaDark dark:text-white mt-1">Venue scale</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="image-shell rounded-[1.75rem] aspect-[5/4]">
+                    <img src="img/generated/kiliner-package-cup-v3.webp" alt="SecuraLabs Ki-Liner package beside a clear cup" width="1402" height="1122"
+                        class="w-full h-full object-cover animate-float">
+                </div>
+                <div class="absolute left-5 bottom-5 right-5 rounded-2xl bg-white/90 dark:bg-gray-950/86 backdrop-blur p-4 border border-white/60 dark:border-white/10">
+                    <p class="text-xs font-bold uppercase tracking-widest text-securaPurple mb-1">Ki-Liner</p>
+                    <p class="text-sm text-gray-700 dark:text-gray-700">Clear liner, black packaging, simple venue rollout.</p>
+                </div>
+            </div>
             </div>
         </div>
     </section>
 
     <section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-5 bg-securaLight dark:bg-gray-800">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="premium-card rounded-2xl p-5">
                     <i class="fa-solid fa-layer-group text-securaPurple text-2xl mb-3" aria-hidden="true"></i>
                     <h2 class="text-base font-bold text-securaDark dark:text-white">Single-use hygienic</h2>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Disposable liner format for events, universities, airlines, and high-volume venues.</p>
                 </div>
-                <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-5 bg-securaLight dark:bg-gray-800">
+                <div class="premium-card rounded-2xl p-5">
                     <i class="fa-solid fa-hand-sparkles text-securaCoral text-2xl mb-3" aria-hidden="true"></i>
                     <h2 class="text-base font-bold text-securaDark dark:text-white">No user action</h2>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Designed to work passively once placed inside drinkware.</p>
                 </div>
-                <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-5 bg-securaLight dark:bg-gray-800">
+                <div class="premium-card rounded-2xl p-5">
                     <i class="fa-solid fa-temperature-half text-securaPurple text-2xl mb-3" aria-hidden="true"></i>
                     <h2 class="text-base font-bold text-securaDark dark:text-white">Cold and thermal variants</h2>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Standard and Thermal versions support different beverage environments.</p>
                 </div>
-                <div class="border border-gray-100 dark:border-gray-800 rounded-xl p-5 bg-securaLight dark:bg-gray-800">
+                <div class="premium-card rounded-2xl p-5">
                     <i class="fa-solid fa-building-shield text-securaCoral text-2xl mb-3" aria-hidden="true"></i>
                     <h2 class="text-base font-bold text-securaDark dark:text-white">Bulk venue orders</h2>
                     <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Built for B2B rollout across bars, campuses, events, and hospitality partners.</p>
@@ -130,27 +149,27 @@
     <section class="py-20 bg-securaLight dark:bg-gray-800/40 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-3xl mx-auto text-center mb-14">
-                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">How Ki-Liner Works</p>
+                <p class="eyebrow mb-3">How Ki-Liner Works</p>
                 <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-4">A passive layer from cup setup to intervention.</h2>
                 <p class="text-gray-600 dark:text-gray-300">The business plan describes nanosensor-based monitoring paired with a phase-responsive material that can form a gel-like barrier when concerning chemical patterns cross a safety threshold.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="premium-card p-8 rounded-2xl">
                     <div class="w-14 h-14 rounded-full bg-purple-100 dark:bg-gray-800 text-securaPurple flex items-center justify-center text-2xl mb-5">
                         <i class="fa-solid fa-circle-dot" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-bold text-securaDark dark:text-white mb-3">1. Place liner</h3>
                     <p class="text-gray-600 dark:text-gray-400">A single-use Ki-Liner is placed inside compatible drinkware before service.</p>
                 </div>
-                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="premium-card p-8 rounded-2xl">
                     <div class="w-14 h-14 rounded-full bg-orange-100 dark:bg-gray-800 text-securaCoral flex items-center justify-center text-2xl mb-5">
                         <i class="fa-solid fa-glass-water-droplet" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-bold text-securaDark dark:text-white mb-3">2. Pour drink</h3>
                     <p class="text-gray-600 dark:text-gray-400">Embedded sensors monitor for chemical changes or patterns associated with tampering.</p>
                 </div>
-                <div class="bg-white dark:bg-gray-900 p-8 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="premium-card p-8 rounded-2xl">
                     <div class="w-14 h-14 rounded-full bg-red-100 dark:bg-gray-800 text-red-500 flex items-center justify-center text-2xl mb-5">
                         <i class="fa-solid fa-ban" aria-hidden="true"></i>
                     </div>
@@ -164,16 +183,16 @@
     <section class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-12 items-center">
             <div>
-                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">Validation Focus</p>
+                <p class="eyebrow mb-3">Validation Focus</p>
                 <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-5">Built around measurable drink-safety challenges.</h2>
                 <div class="space-y-5 text-gray-600 dark:text-gray-300 leading-relaxed">
                     <p><strong class="text-securaDark dark:text-white">Testing focus:</strong> SecuraLabs focuses on reducing false positives in complex beverage compositions, improving reaction time, and supporting practical drinkware formats.</p>
                     <p><strong class="text-securaDark dark:text-white">Detection scope:</strong> Ki-Liner is designed around chemical signatures associated with common drink-adulteration concerns, including GHB, ketamine analogs, and benzodiazepines.</p>
                     <p><strong class="text-securaDark dark:text-white">Responsible use:</strong> Ki-Liner is an added safety layer for social environments. Public validation, certification, and detection coverage should be reviewed as part of any venue rollout.</p>
                 </div>
-                <a href="contact.html" class="inline-block mt-8 bg-securaDark dark:bg-white text-white dark:text-securaDark font-bold py-3 px-6 rounded-full hover:bg-gray-800 dark:hover:bg-gray-100 transition">Start Partnership</a>
+                <a href="contact.html" class="btn-primary mt-8">Start Partnership</a>
             </div>
-            <figure class="rounded-2xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 bg-securaDark">
+            <figure class="image-shell rounded-[1.5rem]">
                 <img src="img/generated/secura-venue-demo.webp" alt="SecuraLabs venue setup with Ki-Liner cups and packaging" width="1536" height="1024" loading="lazy" class="w-full h-full object-cover">
             </figure>
         </div>
@@ -181,13 +200,13 @@
 
     <section class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-4">The Threat is Real. The Solution is Invisible.</h2>
+            <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-4">Built for the moments where attention is divided.</h2>
             <p class="max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-16">In crowded, low-visibility settings, drink tampering is a
                 persistent threat. The Ki-Liner is the world's first passive, material-based safety system that detects
                 abnormal chemical signatures and physically interrupts consumption.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="p-8 rounded-2xl bg-securaLight dark:bg-gray-800 shadow-sm hover:shadow-md transition">
+                <div class="premium-card p-8 rounded-2xl">
                     <div
                         class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaPurple text-2xl">
                         1</div>
@@ -195,7 +214,7 @@
                     <p class="text-gray-600 dark:text-gray-400 text-sm">The invisible Ki-Liner lines your cup. During normal use, it
                         remains completely inactive and undetected.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-securaLight dark:bg-gray-800 shadow-sm hover:shadow-md transition">
+                <div class="premium-card p-8 rounded-2xl">
                     <div
                         class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow text-securaCoral text-2xl">
                         2</div>
@@ -203,7 +222,7 @@
                     <p class="text-gray-600 dark:text-gray-400 text-sm">If abnormal chemical signatures are introduced, the embedded
                         material immediately reacts.</p>
                 </div>
-                <div class="p-8 rounded-2xl bg-securaLight dark:bg-gray-800 shadow-sm hover:shadow-md transition">
+                <div class="premium-card p-8 rounded-2xl">
                     <div
                         class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow text-red-500 text-2xl">
                         <i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
@@ -218,11 +237,11 @@
     <section class="py-16 bg-securaLight dark:bg-gray-800/40 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
             <div class="max-w-2xl text-center md:text-left">
-                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">Product Roadmap</p>
+                <p class="eyebrow mb-3">Product Roadmap</p>
                 <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-3">SecuraLabs is building beyond one liner.</h2>
                 <p class="text-gray-600 dark:text-gray-300">Explore future directions including Ki-Liner 2000, Ki Smart Surfaces, integrated drinkware, and safety packaging.</p>
             </div>
-            <a href="about.html#expansion-roadmap" class="inline-block bg-securaPurple text-white font-semibold py-3 px-7 rounded-full shadow hover:bg-purple-700 transition">View Roadmap</a>
+            <a href="about.html#expansion-roadmap" class="btn-primary">View Roadmap</a>
         </div>
     </section>
 

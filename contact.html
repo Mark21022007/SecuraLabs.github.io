@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 
     <script>
         tailwind.config = {
@@ -60,10 +61,6 @@
             color: #1f2937;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
     </style>
 </head>
 
@@ -76,18 +73,19 @@
 
 
 
-    <section id="contact" class="pt-32 pb-20 bg-securaLight dark:bg-gray-800/30 min-h-[calc(100vh-200px)] flex flex-col justify-center transition-colors duration-300">
+    <section id="contact" class="pt-32 pb-20 min-h-[calc(100vh-200px)] flex flex-col justify-center transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <div>
-                    <h2 class="text-4xl font-bold text-securaDark dark:text-white mb-6">Get in Touch with SecuraLabs.</h2>
+                    <p class="eyebrow mb-4">Contact</p>
+                    <h1 class="text-4xl md:text-5xl font-bold text-securaDark dark:text-white mb-6">Talk to SecuraLabs.</h1>
                     <p class="text-gray-600 dark:text-gray-300 mb-8">Whether you have a question about your order, or you're a venue
                         operator interested in implementing Ki-Liner at scale, our team is here to help.</p>
 
                     <div class="space-y-6">
                         <div class="flex items-start">
                             <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm text-securaPurple mr-4">
-                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 15.007 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
                             </div>
                             <div>
                                 <h4 class="font-semibold text-securaDark dark:text-white">Headquarters</h4>
@@ -96,7 +94,7 @@
                         </div>
                         <div class="flex items-start">
                             <div class="bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm text-securaPurple mr-4">
-                                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                             </div>
                             <div>
                                 <h4 class="font-semibold text-securaDark dark:text-white">Email Support</h4>
@@ -106,24 +104,24 @@
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+                <div class="premium-card rounded-3xl p-8">
                     <form id="contact-form">
                         <div class="mb-4">
                             <label for="contact-name" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Name</label>
                             <input type="text" id="contact-name" name="name" autocomplete="name" required
-                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-700 dark:text-white"
+                                class="form-control text-base w-full px-4 py-3 border border-gray-300 dark:border-gray-600 focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800 focus:ring-securaPurple bg-white dark:bg-gray-700 dark:text-white"
                                 placeholder="Your Name">
                         </div>
                         <div class="mb-4">
                             <label for="contact-email" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Email Address</label>
                             <input type="email" id="contact-email" name="email" autocomplete="email" required
-                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-700 dark:text-white"
+                                class="form-control text-base w-full px-4 py-3 border border-gray-300 dark:border-gray-600 focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800 focus:ring-securaPurple bg-white dark:bg-gray-700 dark:text-white"
                                 placeholder="you@company.com">
                         </div>
                         <div class="mb-4">
                             <label for="contact-inquiry" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Inquiry Type</label>
                             <select id="contact-inquiry" name="inquiry"
-                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple bg-white dark:bg-gray-700 dark:text-white appearance-none cursor-pointer">
+                                class="form-control text-base w-full px-4 py-3 border border-gray-300 dark:border-gray-600 focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800 focus:ring-securaPurple bg-white dark:bg-gray-700 dark:text-white appearance-none cursor-pointer">
                                 <option>General Inquiry</option>
                                 <option>Retail Support</option>
                                 <option>B2B & Venue Partnership</option>
@@ -132,15 +130,20 @@
                         <div class="mb-6">
                             <label for="contact-message" class="block text-gray-700 dark:text-gray-300 font-medium mb-2">Message</label>
                             <textarea id="contact-message" name="message" rows="4"
-                                class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-700 dark:text-white resize-y"
+                                class="form-control text-base w-full px-4 py-3 border border-gray-300 dark:border-gray-600 focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-800 focus:ring-securaPurple bg-white dark:bg-gray-700 dark:text-white resize-y"
                                 placeholder="How can we help?"></textarea>
                         </div>
-                        <button type="submit"
-                            class="w-full bg-securaCoral text-white font-bold py-3 rounded-lg shadow hover:bg-orange-400 transition">Send
-                            Message</button>
+                        <button type="submit" id="contact-submit-btn" class="btn-primary w-full relative">
+                            <span class="btn-text">Send Message</span>
+                            <svg class="btn-spinner hidden animate-spin absolute w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </button>
                     </form>
                     <div id="contact-success-message"
-                        class="hidden text-securaPurple font-semibold bg-purple-50 dark:bg-gray-700 p-6 rounded-lg border border-purple-100 dark:border-gray-600 text-center">
+                        class="hidden text-securaPurple font-semibold bg-purple-50 dark:bg-gray-700 p-6 rounded-lg border border-purple-100 dark:border-gray-600 text-center"
+                        role="alert" aria-live="polite" tabindex="-1">
                     </div>
                 </div>
             </div>

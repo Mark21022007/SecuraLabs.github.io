@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const revealTargets = document.querySelectorAll('section > div, .premium-card, .image-shell');
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        revealTargets.forEach(target => target.classList.add('reveal'));
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.12 });
+        revealTargets.forEach(target => revealObserver.observe(target));
+    }
+
     /* ======================================================================
        1. Mobile Menu Toggle
        ====================================================================== */
@@ -75,16 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         <h4 class="font-bold text-gray-800 dark:text-white text-sm mb-2">${item.productName}</h4>
                         <div class="flex items-center space-x-3">
                             <div class="flex items-center border border-gray-200 dark:border-gray-600 rounded">
-                                <button class="decrease-qty px-2 py-0.5 text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-index="${index}">
-                                    <i class="fa-solid fa-minus text-xs" aria-hidden="true"></i>
+                                <button class="decrease-qty px-2 py-0.5 text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition" aria-label="Decrease quantity" data-index="${index}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus"><path d="M5 12h14"/></svg>
                                 </button>
-                                <span class="text-xs font-semibold px-2 w-6 text-center dark:text-white">${item.quantity}</span>
-                                <button class="increase-qty px-2 py-0.5 text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition" data-index="${index}">
-                                    <i class="fa-solid fa-plus text-xs" aria-hidden="true"></i>
+                                <span class="text-xs font-semibold px-2 w-6 text-center dark:text-white" aria-live="polite">${item.quantity}</span>
+                                <button class="increase-qty px-2 py-0.5 text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition" aria-label="Increase quantity" data-index="${index}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
                                 </button>
                             </div>
-                            <button class="remove-item text-gray-400 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition text-sm" data-index="${index}" title="Remove item">
-                                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+                            <button class="remove-item text-gray-400 dark:text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition text-sm" aria-label="Remove item" data-index="${index}" title="Remove item">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
                             </button>
                         </div>
                     </div>
@@ -183,11 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
                                         <label for="checkout-name" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Full name</label>
-                                        <input id="checkout-name" name="name" type="text" required autocomplete="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                        <input id="checkout-name" name="name" type="text" required autocomplete="name" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-base focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
                                     </div>
                                     <div>
                                         <label for="checkout-email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Email</label>
-                                        <input id="checkout-email" name="email" type="email" required autocomplete="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                        <input id="checkout-email" name="email" type="email" required autocomplete="email" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-base focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
                                     </div>
                                 </div>
                             </div>
@@ -197,19 +210,19 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
                                     <div class="md:col-span-6">
                                         <label for="checkout-address" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Address</label>
-                                        <input id="checkout-address" name="address" type="text" required autocomplete="shipping street-address" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                        <input id="checkout-address" name="address" type="text" required autocomplete="shipping street-address" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-base focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
                                     </div>
                                     <div class="md:col-span-3">
                                         <label for="checkout-city" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">City</label>
-                                        <input id="checkout-city" name="city" type="text" required autocomplete="shipping address-level2" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                        <input id="checkout-city" name="city" type="text" required autocomplete="shipping address-level2" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-base focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
                                     </div>
                                     <div class="md:col-span-1">
                                         <label for="checkout-state" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">State</label>
-                                        <input id="checkout-state" name="state" type="text" required maxlength="2" autocomplete="shipping address-level1" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white uppercase">
+                                        <input id="checkout-state" name="state" type="text" required maxlength="2" autocomplete="shipping address-level1" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-base focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white uppercase">
                                     </div>
                                     <div class="md:col-span-2">
                                         <label for="checkout-zip" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">ZIP code</label>
-                                        <input id="checkout-zip" name="zip" type="text" required inputmode="numeric" autocomplete="shipping postal-code" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:border-securaPurple focus:ring-1 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
+                                        <input id="checkout-zip" name="zip" type="text" required inputmode="numeric" autocomplete="shipping postal-code" class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg text-base focus:outline-none focus:border-securaPurple focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 focus:ring-securaPurple bg-white dark:bg-gray-800 dark:text-white">
                                     </div>
                                 </div>
                             </div>
@@ -252,20 +265,26 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span id="checkout-total">$0.00</span>
                                 </div>
                             </div>
-                            <button type="submit" class="mt-6 w-full bg-securaPurple text-white py-3 rounded-lg font-semibold hover:bg-purple-700 transition shadow">Submit Order Request</button>
-                            <button id="back-to-cart-btn" type="button" class="mt-3 w-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-200 py-3 rounded-lg font-semibold hover:bg-white dark:hover:bg-gray-700 transition">Back to Cart</button>
+                            <button type="submit" id="checkout-submit-btn" class="btn-primary mt-6 w-full relative">
+                                <span class="btn-text">Submit Order Request</span>
+                                <svg class="btn-spinner hidden animate-spin absolute w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </button>
+                            <button id="back-to-cart-btn" type="button" class="btn-secondary mt-3 w-full">Back to Cart</button>
                         </aside>
                     </form>
                 </div>
 
                 <div id="checkout-success-view" class="hidden p-8 text-center">
                     <div class="w-16 h-16 bg-purple-100 dark:bg-gray-800 text-securaPurple rounded-full flex items-center justify-center mx-auto mb-5">
-                        <i class="fa-solid fa-check text-2xl" aria-hidden="true"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
                     </div>
                     <p class="text-xs font-bold tracking-widest uppercase text-securaCoral mb-2">Request received</p>
                     <h3 class="text-3xl font-bold text-securaDark dark:text-white mb-3">Your order request is ready for review.</h3>
                     <p id="checkout-confirmation-text" class="text-gray-600 dark:text-gray-300 max-w-xl mx-auto mb-6"></p>
-                    <button id="finish-checkout-btn" type="button" class="px-8 py-3 bg-securaPurple text-white rounded-lg font-semibold hover:bg-purple-700 transition">Done</button>
+                    <button id="finish-checkout-btn" type="button" class="btn-primary px-8">Done</button>
                 </div>
             </div>
         </div>
@@ -363,13 +382,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = formData.get('name');
             const email = formData.get('email');
 
-            cart = [];
-            saveCart();
-            updateCartUI();
-            checkoutForm.reset();
-            checkoutConfirmationText.textContent = `Order request ${orderNumber} was created for ${name}. SecuraLabs will follow up at ${email} with availability and next steps.`;
-            checkoutFormView.classList.add('hidden');
-            checkoutSuccessView.classList.remove('hidden');
+            const submitBtn = document.getElementById('checkout-submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnSpinner = submitBtn.querySelector('.btn-spinner');
+
+            submitBtn.disabled = true;
+            btnText.classList.add('opacity-0');
+            btnSpinner.classList.remove('hidden');
+
+            setTimeout(() => {
+                cart = [];
+                saveCart();
+                updateCartUI();
+                checkoutForm.reset();
+                checkoutConfirmationText.textContent = `Order request ${orderNumber} was created for ${name}. SecuraLabs will follow up at ${email} with availability and next steps.`;
+                checkoutFormView.classList.add('hidden');
+                checkoutSuccessView.classList.remove('hidden');
+                
+                // Reset button state for future
+                submitBtn.disabled = false;
+                btnText.classList.remove('opacity-0');
+                btnSpinner.classList.add('hidden');
+            }, 1200);
         });
     }
 
@@ -437,13 +471,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            contactForm.classList.add('hidden');
-            
-            if (successMessage) {
-                successMessage.innerHTML = '<i class="fa-solid fa-circle-check text-3xl mb-3 text-securaPurple" aria-hidden="true"></i><br/><span></span>';
-                successMessage.querySelector('span').textContent = `Thank you for contacting SecuraLabs, ${name}. Our team in Sao Paulo will get back to you shortly regarding your inquiry.`;
-                successMessage.classList.remove('hidden');
-            }
+            const submitBtn = document.getElementById('contact-submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnSpinner = submitBtn.querySelector('.btn-spinner');
+
+            submitBtn.disabled = true;
+            btnText.classList.add('opacity-0');
+            btnSpinner.classList.remove('hidden');
+
+            setTimeout(() => {
+                contactForm.classList.add('hidden');
+                
+                if (successMessage) {
+                    successMessage.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-3 text-securaPurple lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg><br/><span></span>';
+                    successMessage.querySelector('span').textContent = `Thank you for contacting SecuraLabs, ${name}. Our team in Sao Paulo will get back to you shortly regarding your inquiry.`;
+                    successMessage.classList.remove('hidden');
+                    successMessage.focus();
+                }
+            }, 1200);
         });
     }
 

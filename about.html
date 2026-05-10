@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 
     <script>
         tailwind.config = {
@@ -60,10 +61,6 @@
             color: #1f2937;
         }
 
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-        }
     </style>
 </head>
 
@@ -76,10 +73,10 @@
 
 
 
-    <section id="about" class="pt-32 pb-20 bg-gray-50 dark:bg-gray-800/30 min-h-[calc(100vh-200px)] transition-colors duration-300">
+    <section id="about" class="pt-32 pb-20 min-h-[calc(100vh-200px)] transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-12 items-center">
             <div class="text-center lg:text-left">
-                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-4">Founded in S&atilde;o Paulo</p>
+                <p class="eyebrow mb-4">Founded in S&atilde;o Paulo</p>
                 <h1 class="text-4xl md:text-5xl font-bold text-securaDark dark:text-white mb-6">Building drinkware protection for safer social spaces.</h1>
                 <p class="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                     SecuraLabs is a safety technology company founded in 2023 by Ari, Marcus, and Jabari after their time at LifePrep Academy. The company began after conversations around real drink-adulteration incidents made one gap clear: most existing tools depend on people noticing danger in the exact environments where awareness is hardest to maintain.
@@ -89,7 +86,7 @@
                 </p>
             </div>
             <div>
-                <div class="rounded-3xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800">
+                <div class="image-shell rounded-3xl">
                     <img src="img/generated/secura-lab-development.webp" alt="SecuraLabs product development table with Ki-Liner prototypes" width="1536" height="1024" loading="lazy" class="w-full h-auto object-cover">
                 </div>
             </div>
@@ -97,17 +94,17 @@
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="premium-card p-6 rounded-2xl">
                     <i class="fa-solid fa-location-dot text-securaPurple text-2xl mb-4" aria-hidden="true"></i>
                     <h2 class="text-xl font-bold text-securaDark dark:text-white mb-2">Origin</h2>
                     <p class="text-gray-600 dark:text-gray-400">Founded in S&atilde;o Paulo, Brazil, with a global hospitality problem in mind.</p>
                 </div>
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="premium-card p-6 rounded-2xl">
                     <i class="fa-solid fa-flask text-securaCoral text-2xl mb-4" aria-hidden="true"></i>
                     <h2 class="text-xl font-bold text-securaDark dark:text-white mb-2">Technology</h2>
                     <p class="text-gray-600 dark:text-gray-400">Nanosensor-based detection paired with a responsive material barrier concept.</p>
                 </div>
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="premium-card p-6 rounded-2xl">
                     <i class="fa-solid fa-building-shield text-securaPurple text-2xl mb-4" aria-hidden="true"></i>
                     <h2 class="text-xl font-bold text-securaDark dark:text-white mb-2">Model</h2>
                     <p class="text-gray-600 dark:text-gray-400">A B2B rollout strategy for bars, universities, restaurants, and large-scale event venues.</p>
@@ -118,21 +115,21 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
             <div class="grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-10 items-center">
                 <div>
-                    <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">Headquarters</p>
+                    <p class="eyebrow mb-3">Headquarters</p>
                     <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-5">A dedicated base for product development and partner growth.</h2>
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         SecuraLabs uses its headquarters as the center for product planning, partner conversations, and the work needed to move Ki-Liner from concept into venue-ready deployment.
                     </p>
                 </div>
-                <figure class="rounded-2xl shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800">
+                <figure class="image-shell rounded-2xl">
                     <img src="img/generated/secura-headquarters.webp" alt="SecuraLabs headquarters building" width="1600" height="900" loading="lazy" class="w-full h-auto object-cover">
                 </figure>
             </div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 grid grid-cols-1 lg:grid-cols-2 gap-10">
-            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
-                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">Our Mission</p>
+            <div class="premium-card p-8 rounded-2xl">
+                <p class="eyebrow mb-3">Our Mission</p>
                 <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-5">Shift safety from reactive to built-in.</h2>
                 <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-5">
                     SecuraLabs is focused on moving drink safety beyond after-the-fact testing. The goal is to embed safety directly into drinkware systems so protection can become part of the normal service flow.
@@ -141,7 +138,7 @@
                     The company designs for environments where speed, volume, and trust matter: nightlife, campuses, airlines, festivals, and hospitality operations using standard cup formats.
                 </p>
             </div>
-            <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700">
+            <div class="premium-card p-8 rounded-2xl">
                 <p class="text-securaCoral font-semibold tracking-wider uppercase text-sm mb-3">Leadership Blend</p>
                 <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-5">Business, biotechnology, and operations.</h2>
                 <div class="space-y-4 text-gray-600 dark:text-gray-300">
@@ -184,7 +181,7 @@
 
         <div id="expansion-roadmap" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
             <div class="max-w-3xl mb-10">
-                <p class="text-securaPurple font-semibold tracking-wider uppercase text-sm mb-3">Expansion Roadmap</p>
+                <p class="eyebrow mb-3">Expansion Roadmap</p>
                 <h2 class="text-3xl font-bold text-securaDark dark:text-white mb-4">Future product directions beyond the first Ki-Liner.</h2>
                 <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                     SecuraLabs is building around a broader platform idea: safety-focused materials that can integrate into drinkware, hospitality surfaces, and packaging systems. These concepts are positioned as future development directions, not current checkout products.
@@ -192,7 +189,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                <div class="premium-card rounded-2xl p-6">
                     <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-gray-700 text-securaPurple flex items-center justify-center text-xl mb-5">
                         <i class="fa-solid fa-circle-nodes" aria-hidden="true"></i>
                     </div>
@@ -201,7 +198,7 @@
                     <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">A future liner concept focused on faster response, broader beverage compatibility, and easier venue integration.</p>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                <div class="premium-card rounded-2xl p-6">
                     <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-gray-700 text-securaCoral flex items-center justify-center text-xl mb-5">
                         <i class="fa-solid fa-table-cells-large" aria-hidden="true"></i>
                     </div>
@@ -210,7 +207,7 @@
                     <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Smart surface applications for counters, trays, packaging, and service environments where contamination awareness matters.</p>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                <div class="premium-card rounded-2xl p-6">
                     <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-gray-700 text-securaPurple flex items-center justify-center text-xl mb-5">
                         <i class="fa-solid fa-wine-glass" aria-hidden="true"></i>
                     </div>
@@ -219,7 +216,7 @@
                     <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Reusable cups and glassware concepts for hospitality groups that want embedded safety as part of service operations.</p>
                 </div>
 
-                <div class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl p-6 shadow-sm">
+                <div class="premium-card rounded-2xl p-6">
                     <div class="w-12 h-12 rounded-full bg-orange-100 dark:bg-gray-700 text-securaCoral flex items-center justify-center text-xl mb-5">
                         <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
                     </div>
