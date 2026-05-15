@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { threshold: 0.12 });
         revealTargets.forEach(target => revealObserver.observe(target));
+
+        // If an element is already visible on load, make sure it displays immediately.
+        revealTargets.forEach(target => {
+            if (target.getBoundingClientRect().top < window.innerHeight) {
+                target.classList.add('is-visible');
+            }
+        });
     }
 
     /* ======================================================================
