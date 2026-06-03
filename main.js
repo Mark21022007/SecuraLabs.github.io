@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const revealTargets = document.querySelectorAll('section > div, .premium-card, .image-shell');
+    const revealTargets = document.querySelectorAll('section > div, .premium-card, .image-shell, .reveal');
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         revealTargets.forEach(target => target.classList.add('reveal'));
         const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -11,13 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { threshold: 0.12 });
         revealTargets.forEach(target => revealObserver.observe(target));
-
-        // If an element is already visible on load, make sure it displays immediately.
-        revealTargets.forEach(target => {
-            if (target.getBoundingClientRect().top < window.innerHeight) {
-                target.classList.add('is-visible');
-            }
-        });
     }
 
     /* ======================================================================
